@@ -7,7 +7,7 @@ overflow: scroll;
 -moz-user-select: none;
 -ms-user-select: none;
 user-select: none;
-background-color:		#505050;
+background-color: slategray;
 color:black;
 font-family:sans-sarif;
 }
@@ -29,9 +29,7 @@ color: silver;
 .bk {
 color: red;
 }
-#timerControl {
-	margin-left:90px;
-}
+
 #normalColumn1 {
 	margin-left:10px;
 }
@@ -166,8 +164,14 @@ color: red;
 	vertical-align: top;
 	margin-bottom: 0px;
 	border:1px white solid;
-	background-color:black;
+	background-color:darkslateblue;
 	color:white;
+}
+
+#hintInput {
+	border:1px white solid;
+	background-color: darkslateblue;
+	color: white;
 }
 
 #skip_req{
@@ -222,7 +226,7 @@ color: red;
 #checkSummaryColumn2 {
 	margin-top:10px;
 	float: left;
-	width: 300px;
+	width: 250px;
 }
 #info_column {
 	margin-top:10px;
@@ -230,6 +234,15 @@ color: red;
 	float: left;
 	width: 550px;
 }
+
+#historique table tr:hover, .classHistorique:hover {
+	color: red;
+}
+
+.classHistorique {
+	margin: 5px;
+}
+
 .pplpics {
 	height:12px;
 	width: 12px;
@@ -240,6 +253,7 @@ color: red;
 	margin-top:10px;
 	float: left;
 	width: 165px;
+	color: white;
 }
 .dungcolumn {
 	margin-top:10px;
@@ -255,8 +269,8 @@ color: red;
 	
 }
 #notes {
-	background-color: black;
-	border: 3px white solid;
+	background-color: darkslateblue;
+	border: 2px white solid;
 	color: white;
 	width:250px;
 }
@@ -274,20 +288,46 @@ color: red;
   display: table;
   clear: both;
 }
+
+.row {
+  display: flex;
+}
+
+#info_globales {
+	display: flex;
+	border: 2px white solid;
+	background: darkslateblue;
+	margin: 5px;
+}
+
 #recompenses {
 	display: flex;
 	justify-content: space-around;
-	border: 3px white solid;
-	background: black;
+	border: 2px white solid;
+	background: darkslateblue;
+}
+
+#normalColumn {
+	border: 2px white solid;
+	background: darkslateblue;
+	margin: 5px;
+}
+
+#dunj {
+	border: 2px white solid;
+	background: darkslateblue;
+	margin: 5px;
 }
 
 .check_input {
 	height:22px;
 	width: 30px;
 	vertical-align: top;
-	margin-bottom: 3px;
-	padding: 0;
-	border: none;
+	/* margin-bottom: 3px; */
+	/* padding: 0; */
+	border: 1px white solid;
+	background: darkslateblue;
+	color: white;
 }
 .picture_input {
 	height:20px;
@@ -308,13 +348,16 @@ color: red;
 	vertical-align: top;
 	margin-bottom: 0px;
 	margin-top:3px;
+	border: 1px white solid;
+	background: darkslateblue;
+	color: white;
 }
 .check_text {
 	font-size: 16px;
 }
 .logic_check_text{
 	font-size: 16px;
-	color: 						chartreuse;
+	color: chartreuse;
 	font-weight:bold;
 	display: inline-block;
 	margin-top:2px;
@@ -322,12 +365,12 @@ color: red;
 	vertical-align: top;
 }
 .logic_check_text2{
-	vertical-align: top;
+	/* vertical-align: top; */
 	font-size: 16px;
-	font-weight: normal;
+	font-weight: bold;
 	color: 	chartreuse;
-	display: inline-block;
-	margin-bottom:2px;
+	/* display: inline-block; */
+	/* margin-bottom:2px; */
 }
 .access_check_text{
 	vertical-align: top;
@@ -533,9 +576,19 @@ color: red;
 	/*top:550px;*/
 	/*left: 980px;*/
 	/*position: absolute;*/
-	/*background: black;*/
+	background: darkslateblue;
 	border: 3px white solid;
 }
+
+table
+{
+    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+}
+
+#historique table {
+	color: white;
+}
+
 .woth_info_text {
 	font-size: 14px;
 	font-style: italic;

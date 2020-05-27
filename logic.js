@@ -440,7 +440,7 @@ function refresh_logic_for_stuff() {
 		
 		if (checkSummary[i] == "trade" && (Logic.prescription || Logic.claim_check)) {var exception = true;} else {var exception = false;}
 		
-		if (Logic[checkSummary[i]] || exception) {document.getElementById(str).className = "logic_check_text2";}
+		if (Logic[checkSummary[i]] || exception) {document.getElementById(str).parentNode.parentNode.className = "logic_check_text2";}
 		else {document.getElementById(str).className = "ool_check_text2";}
 	}
 	

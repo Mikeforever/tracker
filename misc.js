@@ -136,11 +136,11 @@ function afficheHistorique() {
 	// var i = historique.length;
 	var i = 0;
 	historique.forEach(evt => {
-		if (affHistorique != "") {affHistorique = "<br />" + affHistorique} 
-		affHistorique = "<span id=\"historique_" + i  + "\" class=\"classHistorique\" onclick=\"annuler(" + i + ")\" >" + evt.timer + " -> " + evt.loc + ": " + evt.obj + (evt.hinted ? " (Hinted)" : "" ) + "</span>" + affHistorique;
+		affHistorique = "<tr><td>" + evt.timer + "</td><td><span id=\"historique_" + i  + "\" class=\"classHistorique\" onclick=\"annuler(" + i + ")\" >" + Names[Locations.indexOf(evt.loc)] + "</span></td><td>" + evt.obj + "</td><td>" + (evt.hinted ? " (Hinted)" : "" ) + "</td></tr>" + affHistorique;
 		i+=1; // Incrément
 	});
-	document.getElementById("historique").innerHTML = affHistorique;	
+	
+	document.getElementById("historique").innerHTML = "<table>" + affHistorique + "</table>";	
 }
 
 function shuffle(array) {
@@ -483,7 +483,7 @@ function Undo() {
 			document.getElementById("trade_location").style.color = "black";
 		}
 		else if (Check[lastCheck[lastCheck.length-1]] != "junk") {
-			document.getElementById(Check[lastCheck[lastCheck.length-1]] + "_location").innerHTML = document.getElementById(Check[lastCheck[lastCheck.length-1]] + "_location").innerHTML.split('-&gt; ')[0] + "-> ";
+			document.getElementById(Check[lastCheck[lastCheck.length-1]] + "_location").innerHTML = document.getElementById(Check[lastCheck[lastCheck.length-1]] + "_location").innerHTML.split('-&gt; ')[0];
 			document.getElementById(Check[lastCheck[lastCheck.length-1]] + "_location").style.color = "black";
 		}
 	}
