@@ -507,7 +507,7 @@ function junk(x, evt = "") {
 		Game.checks_remaining -= 1;
 
 		document.getElementById(str).value = "junk";
-		ajoutHistorique("junk", str, 1);
+		ajoutHistorique("junk", str);
 	}
 
 	else if(type == 1 || (type == 0 && altKey) || thisIsABossKey) {
@@ -520,7 +520,7 @@ function junk(x, evt = "") {
 		else {return;}
 		if (thisIsABossKey) {temptext2 += Names[temp].split(': ')[1] + ":  Boss Key" + "<br />";}
 		Check[str]="boss_key";
-		ajoutHistorique("boss_key", str);
+		ajoutHistorique("boss_key", str, Hinted[str]);
 	}
 
 	else if ((type == 2 && !altKey) || thisIsAKey) {
@@ -538,7 +538,7 @@ function junk(x, evt = "") {
 			return;
 		}
 		Check[str]="small_key";
-		ajoutHistorique("small_key", str);
+		ajoutHistorique("small_key", str, Hinted[str]);
 		if (thisIsAKey) {temptext2 += Names[temp].split(': ')[1] + ":  Small Key" + "<br />";}
 	}
 	else if (type == 2 && altKey) {
@@ -618,7 +618,7 @@ function junkItem(x, obj = "nothing") {
 	document.getElementById("br_" + str2).style.display = "none";
 
 	Game.checks_remaining -=1;
-	ajoutHistorique(obj, x.id, 1);
+	ajoutHistorique(obj, x.id, Hinted[x.id]);
 	Update();Update();Update();
 }
 
@@ -629,165 +629,16 @@ function junkSong(x, obj) {
 	Update();Update();Update();
 }
 
-function ajoutHistorique(obj, newEvt) {
-	var newHistorique = { loc: newEvt, obj: obj, timer: document.getElementById("timer").innerHTML }; 
-	historique.push(newHistorique);
-	console.log("ajoutHistorique : " + document.getElementById("timer").innerHTML + " -> " + newEvt + ": " + obj);
-	afficheHistorique();
-	
-	// En cas de diffusion, on envoie les données vers le serveur
-	if (statutDiffusion) {
-		ajaxPost(pathServer + "data/" + cleDiffusion, generationJSON(), function(retour) {
-			// Traitement à la réception, on peut identifier le fait d'avoir bien reçu une réponse valide du serveur
-			document.getElementById("statutDiffusion").innerText = retour;
-		});
-	}
-	
-	// On remet le bouton annuler à sa fonction initiale
-	var btnAnnuler = document.getElementById("annuler");
-	btnAnnuler.style.display = "none";
-	historiqueSupprime = []; // On vide le tableau
-}
-
-function afficheHistorique() {
-	affHistorique = "";
-	// var i = historique.length;
-	var i = 0;
-	historique.forEach(evt => {
-		if (affHistorique != "") {affHistorique = "<br />" + affHistorique} 
-		affHistorique = "<span id=\"historique_" + i  + "\" class=\"classHistorique\" onclick=\"annuler(" + i + ")\" >" + evt.timer + " -> " + evt.loc + ": " + evt.obj + "</span>" + affHistorique;
-		i+=1; // Incrément
-	});
-	document.getElementById("historique").innerHTML = affHistorique;	
-}
-
-function annuler(nombre = 1) {
+function annuler(nombre = (historique.length - 1)) {
 	// Récupération de l'action à annuler
-	console.log("annuler : " + nombre + "/" + historique.length);
-	
-	// if (nombre <= historique.length) {
-		// for (var i = 1; i <=nombre ; i++) { historiqueSupprime.push(historique.pop()); }
-	// }
-	
 	historique.splice(nombre, 1);
 	 
 	//var historiqueSupprime_aux = historiqueSupprime; // On sauvegarde ça en mémoire car va être supprimé
 
-	chargerHistorique();
-	
-	// Dans ce cas, on transforme le bouton annuler pour stocker la suppression et pouvoir la recharger au cas où
-	// var btnAnnuler = document.getElementById("annuler");
-	// btnAnnuler.style.display = "inline-block";
-	// historiqueSupprime = historiqueSupprime_aux;
-}
-
-function annulerSuppression() {
-	while (historiqueSupprime.length) {historique.push(historiqueSupprime.pop()); }
-	
-	// On remet le bouton tel qu'il était
-	var btnAnnuler = document.getElementById("annuler");
-	btnAnnuler.style.display = "none";
-	
+	// On charge l'historique
 	chargerHistorique();
 }
 
-function chargerHistorique (load = false) {
-	var mem = {};
-	for (var i = 1; i <= 5; i++) {
-		mem["woth_input" + i] = document.getElementById("woth_input" + i).value;
-		if (i <= 3) {
-			mem["barren_input" + i] = document.getElementById("barren_input" + i).value;
-		}
-	}
-	mem["hintInput"] = document.getElementById("hintInput").value;
-	mem["markStones"] = document.getElementById("markStones").value;
-	mem["markMedallions"] = document.getElementById("markMedallions").value;
-	if (document.getElementById("urlDiffuseur") != null) {
-		mem["urlDiffuseur"] = document.getElementById("urlDiffuseur").value;
-		mem["nomDiffuseur"] = document.getElementById("nomDiffuseur").value;
-	}
-
-	var listeHinted = [];
-	for (var elt in Hinted) {
-		if (Hinted[elt]) {listeHinted.push(elt);}
-	}
-
-	// Réinitialisation de la page
-	document.body.innerHTML = contenuBodyInitial;
-	initialize();
-
-	// Récupération de la mémoire
-	for (var i = 1; i <= 5; i++) {
-		 document.getElementById("woth_input" + i).value = mem["woth_input" + i];
-		if (i <= 3) {
-			document.getElementById("barren_input" + i).value = mem["barren_input" + i];
-		}
-	}
-	document.getElementById("hintInput").value = mem["hintInput"];
-	document.getElementById("markStones").value = mem["markStones"];
-	document.getElementById("markMedallions").value = mem["markMedallions"];
-	if (document.getElementById("urlDiffuseur") != null) {
-		document.getElementById("urlDiffuseur").value = mem["urlDiffuseur"]
-		document.getElementById("nomDiffuseur").value = mem["nomDiffuseur"];
-	}
-
-	var hist_aux = historique.slice(); // On change car l'historique va se remplir à nouveau, il faut le vider
-	historique = [];
-	
-	hist_aux.forEach(evt => {
-		
-		if (document.getElementById(evt.loc) == null) {
-			console.log("null : " + evt.loc);
-		} else {
-				
-			if (document.getElementById(evt.loc).tagName == "INPUT") {
-				console.log("input : " + evt.loc);
-				document.getElementById(evt.loc).value = evt.obj; 
-			} else if (document.getElementById(evt.loc).tagName == "SPAN") {
-				console.log("span : " + evt.loc);
-				if (evt.obj != "") {listeHinted = (evt.obj).split("/");}
-			} else if (document.getElementById(evt.loc).tagName == "TEXTAREA") {
-				console.log("TextArea : " + evt.loc);
-				document.getElementById(evt.loc).value = evt.obj;
-			} else {
-				console.log("Autre : " + evt.loc);
-				document.getElementById(evt.loc).value = evt.obj; 
-			}
-		}
-
-		if ((evt.loc == "forest") || (evt.loc == "fire") || (evt.loc == "water") || (evt.loc == "spirit") || (evt.loc == "shadow") || (evt.loc == "ganons") || (evt.loc == "gtg") || (evt.loc == "well")) {junkUltra(document.getElementById(evt.loc)); }	
-	});
-
-	if (load) {
-		// Réinitialisation de l'initial time uniquement dans ce cas
-		initialTime = d.getTime() - parseInt(hist_aux[hist_aux.length -2].timer, 10)*1000;
-		console.log("Calcul temps : " + initialTime + " = " + d.getTime() + " - " + parseInt(hist_aux[hist_aux.length -2].timer, 10) + " (" + hist_aux[hist_aux.length -2].timer + ")");
-		
-		// On supprime les 2 champs qui ont été ajoutés pour la sauvegarde
-		hist_aux.splice(historique.length - 2);
-	}
-
-	Update();
-	process_inputs();
-
-	// Après l'update, on remet à jour l'historique correctement, et notamment dans le bon ordre des événements
-	historique = [];
-	historique = hist_aux.slice();
-	afficheHistorique();
-	
-	// En cas de diffusion, on envoie les données vers le serveur actualisés pour le chrono
-	if (statutDiffusion) {
-		ajaxPost(pathServer + "data/" + cleDiffusion, generationJSON(), function(retour) {
-			// Traitement à la réception, on peut identifier le fait d'avoir bien reçu une réponse valide du serveur
-			document.getElementById("statutDiffusion").innerText = retour;
-		});
-	}
-
-	// On repositionne les hint qui vont bien
-	listeHinted.forEach(elt => {
-		if (!elt.startsWith("Unread") && elt != "") {console.log("Hinted : " + elt); Hinted[elt] = false; toggleHint(document.getElementById("text_" + elt));}
-	});
-}
 
 function check_circle_info() {
 	document.getElementById("forest").innerHTML = "" + Game.forest_checks_remaining;
@@ -814,6 +665,197 @@ function check_circle_info() {
 	if (Game.spirit_boss_key) {document.getElementById("spiritBKs").innerHTML = 0;} else {document.getElementById("spiritBKs").innerHTML = 1;}
 	if (Game.shadow_boss_key) {document.getElementById("shadowBKs").innerHTML = 0;} else {document.getElementById("shadowBKs").innerHTML = 1;}
 	if (Game.ganons_boss_key) {document.getElementById("ganonsBKs").innerHTML = 0;} else {document.getElementById("ganonsBKs").innerHTML = 0;}
+}
+
+function highlight(x) {
+	//ajoutHistorique(x.id, "highlight");
+	if (x.id == "silverscaleimg") {
+		if (Game.scale2 == true) {
+			Game.scale1 = false; 
+			Game.scale2 = false;
+			document.getElementById(x.id).src = Game.silver_scale_img;
+			x.style.opacity = .2;
+		}
+		else if (x.style.opacity == 1) {
+			Game.scale2 = true;
+			document.getElementById(x.id).src = Game.golden_scale_img;
+		} 
+		else {
+			Game.scale1 = true;
+			x.style.opacity = 1;
+		}
+	}
+	else {
+		if (x.style.opacity == 1){x.style.opacity =.2;}
+		else {x.style.opacity =1;}
+	}
+	
+	if (x.id == "for_med") {
+		if (x.style.opacity == 1) {Logic.forest_medallion = true;}
+	}
+	else if (document.getElementById(x.id).style.opacity == 1) {
+		if (document.getElementById(x.id).src.endsWith(Game.bomb_bag_img.substring(2))){Game.bomb_bag1 = true; }
+		if (document.getElementById(x.id).src.endsWith(Game.iron_boots_img.substring(2))){Game.iron_boots = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.hover_boots_img.substring(2))){Game.hover_boots = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.hookshot_img.substring(2))){Game.hookshot1 = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.bow_img.substring(2))){Game.bow1 = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.goron_bracelet_img.substring(2))){Game.strength1 = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.hammer_img.substring(2))){Game.hammer = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.golden_scale_img.substring(2))){Game.scale2 = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.silver_gauntlets_img.substring(2))){Game.strength1 = true; Game.strength2 = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.magic_meter_img.substring(2))){Game.magic1 = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.longshot_img.substring(2))){Game.hookshot1 = true; Game.hookshot2 = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.mirror_shield_img.substring(2))){Game.mirror_shield = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.dins_fire_img.substring(2))){Game.dins_fire = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.letter_img.substring(2))){Game.rutos_letter = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.boomerang_img.substring(2))){Game.boomerang = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.lens_img.substring(2))){Game.lens_of_truth = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.golden_gauntlets_img.substring(2))){Game.strength1 = true; Game.strength2 = true; Game.strength3 = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.silver_scale_img.substring(2))){Game.scale1 = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.light_arrows_img.substring(2))){Game.light_arrows = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.fire_arrows_img.substring(2))){Game.fire_arrows = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.farores_wind_img.substring(2))){Game.farores_wind = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.bottle_img.substring(2))){Game.bottle1 = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.slingshot_img.substring(2))){Game.slingshot1 = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.lullaby_img.substring(2))){Game.lullaby = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.eponas_img.substring(2))){Game.eponas = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.sarias_img.substring(2))){Game.sarias = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.suns_img.substring(2))){Game.suns = true; Game.suns_song = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.sot_img.substring(2))){Game.sot = true; Game.song_of_time = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.sos_img.substring(2))){Game.sos = true; Game.song_of_storms = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.minuet_img.substring(2))){Game.minuet = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.bolero_img.substring(2))){Game.bolero = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.serenade_img.substring(2))){Game.serenade = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.requiem_img.substring(2))){Game.requiem = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.nocturne_img.substring(2))){Game.nocturne = true;}
+		if (document.getElementById(x.id).src.endsWith(Game.prelude_img.substring(2))){Game.prelude = true;}
+	}
+	else {
+		if (document.getElementById(x.id).src.endsWith(Game.bomb_bag_img.substring(2))){Game.bomb_bag1 = false; }
+		if (document.getElementById(x.id).src.endsWith(Game.iron_boots_img.substring(2))){Game.iron_boots = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.hover_boots_img.substring(2))){Game.hover_boots = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.hookshot_img.substring(2))){Game.hookshot1 = false; Game.hookshot2 = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.bow_img.substring(2))){Game.bow1 = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.goron_bracelet_img.substring(2))){Game.strength1 = false; Game.strength2 = false; Game.strength3 = false; Game.silver_gauntlets = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.hammer_img.substring(2))){Game.hammer = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.golden_scale_img.substring(2))){Game.scale2 = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.silver_gauntlets_img.substring(2))){Game.strength2 = false; Game.strength3 = false; Game.silver_gauntlets = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.magic_meter_img.substring(2))){Game.magic1 = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.longshot_img.substring(2))){Game.hookshot2 = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.mirror_shield_img.substring(2))){Game.mirror_shield = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.dins_fire_img.substring(2))){Game.dins_fire = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.letter_img.substring(2))){Game.rutos_letter = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.boomerang_img.substring(2))){Game.boomerang = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.lens_img.substring(2))){Game.lens_of_truth = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.golden_gauntlets_img.substring(2))){Game.strength3 = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.silver_scale_img.substring(2))){Game.scale1 = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.light_arrows_img.substring(2))){Game.light_arrows = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.fire_arrows_img.substring(2))){Game.fire_arrows = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.farores_wind_img.substring(2))){Game.farores_wind = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.bottle_img.substring(2))){Game.bottle1 = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.slingshot_img.substring(2))){Game.slingshot1 = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.lullaby_img.substring(2))){Game.lullaby = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.eponas_img.substring(2))){Game.eponas = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.sarias_img.substring(2))){Game.sarias = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.suns_img.substring(2))){Game.suns = false; Game.suns_song = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.sot_img.substring(2))){Game.sot = false; Game.song_of_time = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.sos_img.substring(2))){Game.sos = false; Game.song_of_storms = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.minuet_img.substring(2))){Game.minuet = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.bolero_img.substring(2))){Game.bolero = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.serenade_img.substring(2))){Game.serenade = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.requiem_img.substring(2))){Game.requiem = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.nocturne_img.substring(2))){Game.nocturne = false;}
+		if (document.getElementById(x.id).src.endsWith(Game.prelude_img.substring(2))){Game.prelude = false;}
+	}
+	
+	if (x.id == "fir_med" && x.style.opacity==1) {Logic.fire_medallion = true;}
+	if (x.id == "wat_med" && x.style.opacity==1) {Logic.water_medallion = true;}
+	if (x.id == "spi_med" && x.style.opacity==1) {Logic.spirit_medallion = true;}
+	if (x.id == "sha_med" && x.style.opacity==1) {Logic.shadow_medallion = true;}
+	if (x.id == "lit_med" && x.style.opacity==1) {Logic.light_medallion = true;}
+	
+	if (x.id == "kok_eme" && x.style.opacity==1) {Logic.kokiri_emerald = true;}
+	if (x.id == "gor_rub" && x.style.opacity==1) {Logic.goron_ruby = true;}
+	if (x.id == "zor_sap" && x.style.opacity==1) {Logic.zora_sapphire = true;}
+	
+	Update(); Update(); Update();
+}
+
+function toggleHint(loc) {
+	var location = "";
+	var item = "";
+	var itemText = "";
+	if (loc.className == "logic_check_text" || loc.className == "ool_check_text" || loc.className == "access_check_text") {location = loc.id.slice(5); item = Check[location];} else {item = loc.id.slice(0, -9); location = Location[item];}
+	if (item == "sos") {item = "song_of_storms";}
+	if (item == "suns") {item = "suns_song";}
+	if (item == "sot") {item = "song_of_time";}
+	if (item == "serenade") {itemText = "Serenade";} else if (item == "prelude") {itemText = "Prelude"} else {itemText = ItemNames[Items.indexOf(item)];}
+	if (item != "unknown" && location != undefined) {
+		Hinted[location] = !Hinted[location];
+		if (loc.className == "logic_check_text" || loc.className == "ool_check_text" || loc.className == "access_check_text") {
+			text = Names[Locations.indexOf(location)] + ":  " + itemText + "<br>";
+		}
+		else {
+			text = Names[Locations.indexOf(location)].split(":")[1].slice(1) + ":  " + ItemNames[Items.indexOf(item)] + "<br>";
+		}
+		if (Hinted[location]) {
+			var hintText = document.createElement("small");
+			hintText.innerHTML = text;
+			document.getElementById("notes").insertBefore(hintText, document.getElementById("notes").firstChild);
+		}
+		else {
+			for (i = 0; i < document.getElementById("notes").children.length; i++) {
+				if (document.getElementById("notes").children[i].innerHTML == text) {
+					document.getElementById("notes").children[i].remove();
+					break;
+				}
+			}
+		}
+	}
+}
+
+function handleAlternateHintInput() {
+	if (temptext2 != "") {
+		var hintText = document.createElement("small");
+		hintText.innerHTML = temptext2;
+		document.getElementById("notes").insertBefore(hintText, document.getElementById("notes").firstChild);
+		temptext2 = "";
+	}
+
+	var lines = document.getElementById("hintInput").value.split('\n');
+	var new_lines = "";
+	var flag = false;
+	var str = "";
+	for (var j=0; j < lines.length; j++) {
+		for (var i= 0; i < hintNames.length; i++) {
+			if (lines[j].startsWith(hintNames[i]+" ") || lines[j].startsWith(hintNames2[i]+" ") || lines[j].startsWith(hintNames3[i]+" ") || lines[j].startsWith(hintNames4[i]+" ") || lines[j].startsWith(hintNames5[i]+" ") || lines[j].startsWith(hintNames6[i]+" ")) {
+				for (var k = 0; k < inputs.length; k++) {
+					str = inputs[k];
+					if (i < 6) {
+						str = capitalizeThirdLetter(str);
+					}
+					else {
+						str = capitalizeFirstLetter(str);
+					}
+					if (k == 0) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {document.getElementById("text_" + hintIndexes[i]).dispatchEvent(new Event('mousedown')); flag = true;} }
+					else if (k == 1) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {thisIsAKey = true; document.getElementById("text_" + hintIndexes[i]).dispatchEvent(new Event('mousedown')); thisIsAKey = false; flag = true; } }
+					else if (k == 2) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {thisIsABossKey = true; document.getElementById("text_" + hintIndexes[i]).dispatchEvent(new Event('mousedown')); thisIsABossKey = false; flag = true;} }
+					else {if (lines[j].endsWith(" " + inputs[k])) {if (Check[hintIndexes[i]] == "unknown") {document.getElementById(hintIndexes[i]).value = str;} flag = true;}} 
+					
+					// if (k == 0) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {Hinted[hintIndexes[i]] = true; flag = true;} }
+					// else if (k == 1) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {Hinted[hintIndexes[i]] = true; flag = true; } }
+					// else if (k == 2) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {Hinted[hintIndexes[i]] = true; thisIsABossKey = false; flag = true;} }
+					// else {if (lines[j].endsWith(" " + inputs[k])) {if (Check[hintIndexes[i]] == "unknown") {Hinted[hintIndexes[i]] = true;} flag = true;}} 
+				} 
+			}
+			
+		}
+		if (!flag) {
+			if (new_lines != "") {new_lines += "\n";}
+				new_lines += lines[j];
+		}
+	}
+	document.getElementById("hintInput").value = new_lines;
 }
 
 function handleAreaBreaks() {

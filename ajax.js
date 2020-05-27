@@ -99,7 +99,6 @@ function modeLecteur(codeDiffuseur) {
 	// On va récupérer des données json via appel ajax
 	ajaxGet(pathServer + "lecture/" + codeDiffuseur, function(retour) {
 		// On a récupéré l'historique, on peut le charger
-		console.log("mode lecteur : oot/api/lecture/" + codeDiffuseur + " : " + retour);
 		if (retour != null && retour != "") {
 			historique = JSON.parse(retour);
 			chargerHistorique(true);

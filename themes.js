@@ -1,4 +1,5 @@
 function dark_soli() {
+	console.log("Application thème");
 	Game.bomb_bag_img= "./images/explosive505050.png";
 	Game.letter_img= "./images/letter505050.png";
 	Game.boomerang_img= "./images/boomerang505050.png";
@@ -396,18 +397,19 @@ function light_soli() {
 }
 
 function handleThemes() {
-	if(Game.theme == "dark" && Game.themeChange) {
-		if (Person.type == "soli") {dark_soli();}
-		else if (Person.type == "normie") {dark_normie();}
-		else if (Person.type = "tagnia") {dark_tagnia();}	
-		dark_theme();
-	}
-	if(Game.theme == "light" && Game.themeChange) {
-		if (Person.type == "soli") {light_soli();}
-		light_theme();
-	}
+	// if(Game.theme == "dark" && Game.themeChange) {
+		// if (Person.type == "soli") {dark_soli();}
+		// else if (Person.type == "normie") {dark_normie();}
+		// else if (Person.type = "tagnia") {dark_tagnia();}	
+		// dark_theme();
+	// }
+	// if(Game.theme == "light" && Game.themeChange) {
+		// if (Person.type == "soli") {light_soli();}
+		// light_theme();
+	// }
 	
-	if (Game.changetheme == 1) {Game.themeChange = true; Game.changetheme = 0;}
+	// if (Game.changetheme == 1) {Game.themeChange = true; Game.changetheme = 0;}
+	dark_normie();
 }
 
 function dark_theme() {

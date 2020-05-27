@@ -4,6 +4,7 @@ function woth_and_barren_processing() {
 	}
 
 	for (var i = 1; i <= 5; i++) {
+		// On positionne dans Area les woth et barren
 		var str = document.getElementById("woth_input" + i).value;
 		str = str.replace("2","");
 		if (str == "kok" || str == "kf" || str == "koki" || str == "kfc") {if (Area[1] == "4woth") {Area[1] = "5woth";} else if (Area[1] == "3woth") {Area[1] = "4woth";} else if (Area[1] == "2woth") {Area[1] = "3woth";} else if (Area[1] == "woth") {Area[1] = "2woth";} else {Area[1] = "woth";}}
@@ -278,10 +279,11 @@ function woth_and_barren_processing() {
 		
 	for (var i = 1; i <= 34; i++) {
 		
-		if (Area[i] == "barren") {AreaAge[i] += 1;}
-		else {AreaAge[i] = 0;}
+		// if (Area[i] == "barren") {AreaAge[i] += 1;}
+		// else {AreaAge[i] = 0;}
 		
-		if (AreaAge[i] == 10) {
+		// if (AreaAge[i] == 10) {
+		if (Area[i] == "barren") {
 			hinted = true;
 			if (i == 1) {
 				if(Check[Locations[0]] == "unknown") {document.getElementById("text_" + Locations[0]).dispatchEvent(new Event('mousedown'));}
@@ -501,42 +503,4 @@ function trackUnreadHints() {
 	document.getElementById("unread").innerHTML = temptext[0] + "Unread: " + temptext[1];
 }
 
-function handleAlternateHintInput() {
-	if (temptext2 != "") {
-		var hintText = document.createElement("small");
-		hintText.innerHTML = temptext2;
-		document.getElementById("notes").insertBefore(hintText, document.getElementById("notes").firstChild);
-		temptext2 = "";
-	}
-
-	var lines = document.getElementById("hintInput").value.split('\n');
-	var new_lines = "";
-	var flag = false;
-	var str = "";
-	for (var j=0; j < lines.length; j++) {
-		for (var i= 0; i < hintNames.length; i++) {
-			if (lines[j].startsWith(hintNames[i]+" ") || lines[j].startsWith(hintNames2[i]+" ") || lines[j].startsWith(hintNames3[i]+" ") || lines[j].startsWith(hintNames4[i]+" ") || lines[j].startsWith(hintNames5[i]+" ") || lines[j].startsWith(hintNames6[i]+" ")) {
-				for (var k = 0; k < inputs.length; k++) {
-					str = inputs[k];
-					if (i < 6) {
-						str = capitalizeThirdLetter(str);
-					}
-					else {
-						str = capitalizeFirstLetter(str);
-					}
-					if (k == 0) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {document.getElementById("text_" + hintIndexes[i]).dispatchEvent(new Event('mousedown')); flag = true;} }
-					else if (k == 1) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {thisIsAKey = true; document.getElementById("text_" + hintIndexes[i]).dispatchEvent(new Event('mousedown')); thisIsAKey = false; flag = true; } }
-					else if (k == 2) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {thisIsABossKey = true; document.getElementById("text_" + hintIndexes[i]).dispatchEvent(new Event('mousedown')); thisIsABossKey = false; flag = true;} }
-					else {if (lines[j].endsWith(" " + inputs[k])) {if (Check[hintIndexes[i]] == "unknown") {document.getElementById(hintIndexes[i]).value = str;} flag = true;}} 
-				} 
-			}
-			
-		}
-		if (!flag) {
-			if (new_lines != "") {new_lines += "\n";}
-				new_lines += lines[j];
-		}
-	}
-	document.getElementById("hintInput").value = new_lines;
-}
 
