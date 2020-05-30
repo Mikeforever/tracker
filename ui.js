@@ -24,7 +24,7 @@ function process_inputs() {
 			if (document.getElementById(key).value == "boss_key" && Check[key] == "unknown") {junk(document.getElementById(key), "middle");}
 
 			if (document.getElementById(key).value == "far" && !Known.farores_wind) {var obj = "far"; Check[document.getElementById(key).id] = "farores_wind"; Location.farores_wind = document.getElementById(key).id; document.getElementById("farores_wind_location").innerHTML = Names[temp-1]; Known.farores_wind = true; if (!hinted && !peeked) {Game.farores_wind = true;} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1].split(': ')[1] + ":  Farores" + "<br />";} junkItem(document.getElementById(key), obj);  continue;}
-			if (document.getElementById(key).value == "chu" && !Known.bombchus) {var obj = "chu"; Check[document.getElementById(key).id] = "bombchus"; Location.bombchus = document.getElementById(key).id; document.getElementById("bombchus_location").innerHTML = Names[temp-1]; Known.bombchus = true; if (!hinted && !peeked) {} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1].split(': ')[1] + ":  BombChus" + "<br />";} junkItem(document.getElementById(key), obj); if (!Game.has_chus) {enableChus();} continue;}
+			if (document.getElementById(key).value == "chu") {var obj = "chu"; Check[document.getElementById(key).id] = "bombchus"; Location.bombchus = document.getElementById(key).id; document.getElementById("bombchus_location").innerHTML = Names[temp-1]; Known.bombchus = true; if (!hinted && !peeked) {} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1].split(': ')[1] + ":  BombChus" + "<br />";} junkItem(document.getElementById(key), obj); if (!Game.has_chus) {enableChus();} continue;}
 		
 			if (document.getElementById(key).value == "sli" && !Known.slingshot1) {var obj = "sli"; Check[document.getElementById(key).id] = "slingshot1"; Location.slingshot1 = document.getElementById(key).id; document.getElementById("slingshot1_location").innerHTML = Names[temp-1]; Known.slingshot1 = true; if (!hinted && !peeked) {Game.slingshot1 = true;} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1].split(': ')[1] + ":  Slingshot" + "<br />";} junkItem(document.getElementById(key), obj);  continue;}
 			else if (document.getElementById(key).value == "sli" && !Known.slingshot2) {var obj = "sli"; Check[document.getElementById(key).id] = "slingshot2"; Location.slingshot2 = document.getElementById(key).id; document.getElementById("slingshot2_location").innerHTML = Names[temp-1]; Known.slingshot2 = true; if (!hinted && !peeked) {Game.slingshot2 = true;} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1].split(': ')[1] + ":  Slingshot" + "<br />";} junkItem(document.getElementById(key), obj);  continue;}
@@ -94,7 +94,7 @@ function process_inputs() {
 			if (document.getElementById(key).value == "sos" && !Known.song_of_storms) {var obj = "sos"; Check[document.getElementById(key).id] = "sos"; Location.song_of_storms = document.getElementById(key).id; Known.song_of_storms = true; if (!hinted && !peeked) {Game.song_of_storms = true;} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1] + ": Storms" + "<br />";} var change = "text_" + document.getElementById(key).id; document.getElementById(change).innerHTML += ": Storms"; backUp[temp-1] += ": Storms"; junkSong(document.getElementById(key), obj); continue;}
 			if (document.getElementById(key).value == "min" && !Known.minuet) {var obj = "min"; Check[document.getElementById(key).id] = "minuet"; Location.minuet = document.getElementById(key).id; Known.minuet = true; if (!hinted && !peeked) {Game.minuet = true;} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1] + ": Minuet" + "<br />";} var change = "text_" + document.getElementById(key).id; document.getElementById(change).innerHTML += ": Minuet"; backUp[temp-1] += ": Minuet"; junkSong(document.getElementById(key), obj); continue;}
 			if (document.getElementById(key).value == "bol" && !Known.bolero) {var obj = "bol"; Check[document.getElementById(key).id] = "bolero";Location.bolero = document.getElementById(key).id; Known.bolero = true; if (!hinted && !peeked) {Game.bolero = true;} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1] + ": Bolero" + "<br />";} var change = "text_" + document.getElementById(key).id; document.getElementById(change).innerHTML += ": Bolero"; backUp[temp-1] += ": Bolero"; junkSong(document.getElementById(key), obj); continue;}
-			if (document.getElementById(key).value == "ser" && !Known.serenade) {var obj = "ser"; Check[document.getElementById(key).id] = "serenade";Location.serenade = document.getElementById(key).id; Known.serenade = true; if (!hinted && !peeked) {Game.serenade = true;} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1] + ": Serenade" + "<br />";} var change = "text_" + document.getElementById(key).id; document.getElementById(change).innerHTML += ": Serenade"; backUp[temp-1] += ": Serenade"; junkSong(document.getElementById(key), obj); continue;}
+			if (document.getElementById(key).value == "ser" && !Known.serenade) {console.log(key); var obj = "ser"; Check[document.getElementById(key).id] = "serenade";Location.serenade = document.getElementById(key).id; Known.serenade = true; if (!hinted && !peeked) {Game.serenade = true;} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1] + ": Serenade" + "<br />";} var change = "text_" + document.getElementById(key).id; document.getElementById(change).innerHTML += ": Serenade"; backUp[temp-1] += ": Serenade"; junkSong(document.getElementById(key), obj); continue;}
 			if (document.getElementById(key).value == "req" && !Known.requiem) {var obj = "req"; Check[document.getElementById(key).id] = "requiem";Location.requiem = document.getElementById(key).id; Known.requiem = true; if (!hinted && !peeked) {Game.requiem = true;} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1] + ": Requiem" + "<br />";}var change = "text_" + document.getElementById(key).id; document.getElementById(change).innerHTML += ": Requiem"; backUp[temp-1] += ": Requiem"; junkSong(document.getElementById(key), obj); continue;}
 			if (document.getElementById(key).value == "noc" && !Known.nocturne) {var obj = "noc"; Check[document.getElementById(key).id] = "nocturne";Location.nocturne = document.getElementById(key).id; Known.nocturne = true; if (!hinted && !peeked) {Game.nocturne = true;} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1] + ": Nocturne" + "<br />";} var change = "text_" + document.getElementById(key).id; document.getElementById(change).innerHTML += ": Nocturne"; backUp[temp-1] += ": Nocturne"; junkSong(document.getElementById(key), obj); continue;}
 			if (document.getElementById(key).value == "pre" && !Known.prelude) {var obj = "pre"; Check[document.getElementById(key).id] = "prelude";Location.prelude = document.getElementById(key).id; Known.prelude = true; if (!hinted && !peeked) {Game.prelude = true;} if (hinted) {Hinted[key] = true;} if (hinted || peeked) {temptext2 += Names[temp - 1] + ": Prelude" + "<br />";} var change = "text_" + document.getElementById(key).id; document.getElementById(change).innerHTML += ": Prelude"; backUp[temp-1] += ": Prelude"; junkSong(document.getElementById(key), obj); continue;}
@@ -188,7 +188,9 @@ function stone_medallion_input() {
 	Logic.water_medallion_location = Logic.dung6;
 	Logic.generic1 = Logic.dung7;
 	Logic.generic2 = Logic.dung8;
-	Logic.generic3 = Logic.dung9;		
+	Logic.generic3 = Logic.dung9;	
+
+	handleDungeonHighlights();	
 }
 
 function junk(x, evt = "") {
@@ -227,7 +229,7 @@ function junk(x, evt = "") {
 		Game.checks_remaining -= 1;
 
 		document.getElementById(str).value = "junk";
-		ajoutHistorique("junk", str);
+		ajoutHistorique("junk", str, Hinted[str]);
 	}
 
 	else if(type == 1 || (type == 0 && altKey) || thisIsABossKey) {
@@ -268,7 +270,7 @@ function junk(x, evt = "") {
 	}
 	else {
 		Check[str]="junk";
-		ajoutHistorique("junk", str, 1);
+		ajoutHistorique("junk", str, Hinted[str]);
 		Game.checks_remaining -=1;
 	}
 
@@ -345,7 +347,7 @@ function junkItem(x, obj = "nothing") {
 function junkSong(x, obj) {
 	var str2 = x.id;
 	document.getElementById(str2).style.display = "none";
-	ajoutHistorique(obj, x.id);
+	ajoutHistorique(obj, x.id, Hinted[x.id]);
 	Update();Update();Update();
 }
 
@@ -557,6 +559,7 @@ function handleAlternateHintInput() {
 					else {
 						str = capitalizeFirstLetter(str);
 					}
+					
 					if (k == 0) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {document.getElementById("text_" + hintIndexes[i]).dispatchEvent(new Event('mousedown')); flag = true;} }
 					else if (k == 1) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {thisIsAKey = true; document.getElementById("text_" + hintIndexes[i]).dispatchEvent(new Event('mousedown')); thisIsAKey = false; flag = true; } }
 					else if (k == 2) { if (lines[j].endsWith(" " + inputs[k]) && Check[hintIndexes[i]] == "unknown") {thisIsABossKey = true; document.getElementById("text_" + hintIndexes[i]).dispatchEvent(new Event('mousedown')); thisIsABossKey = false; flag = true;} }
@@ -663,14 +666,14 @@ function handleItemHighlights() {
 
 function handleDungeonHighlights() {
 	if (Game.forest_medallion) {document.getElementById("dung4_icon").style.opacity=1; document.getElementById("text_dung4").style.opacity=.2;} else{document.getElementById("dung4_icon").style.opacity=.2; document.getElementById("text_dung4").style.opacity=1;}
-	if (Game.fire_medallion) {document.getElementById("dung5_icon").style.opacity=1; document.getElementById("text_dung5").style.opacity=.2;} else{document.getElementById("dung5_icon").style.opacity=.2; document.getElementById("text_dung4").style.opacity=1;}
-	if (Game.water_medallion) {document.getElementById("dung6_icon").style.opacity=1; document.getElementById("text_dung6").style.opacity=.2;} else{document.getElementById("dung6_icon").style.opacity=.2; document.getElementById("text_dung4").style.opacity=1;}
-	if (Game.gen1) {document.getElementById("dung7_icon").style.opacity=1; document.getElementById("text_dung7").style.opacity=.2;} else{document.getElementById("dung7_icon").style.opacity=.2; document.getElementById("text_dung4").style.opacity=1;}
-	if (Game.gen2) {document.getElementById("dung8_icon").style.opacity=1; document.getElementById("text_dung8").style.opacity=.2;} else{document.getElementById("dung8_icon").style.opacity=.2; document.getElementById("text_dung4").style.opacity=1;}
-	if (Game.gen3) {document.getElementById("dung9_icon").style.opacity=1; document.getElementById("text_dung9").style.opacity=.2;} else{document.getElementById("dung9_icon").style.opacity=.2; document.getElementById("text_dung4").style.opacity=1;}
-	if (Game.emerald) {document.getElementById("dung1_icon").style.opacity=1; document.getElementById("text_dung1").style.opacity=.2;} else{document.getElementById("dung1_icon").style.opacity=.2; document.getElementById("text_dung4").style.opacity=1;}
-	if (Game.ruby) {document.getElementById("dung2_icon").style.opacity=1; document.getElementById("text_dung2").style.opacity=.2;} else{document.getElementById("dung2_icon").style.opacity=.2; document.getElementById("text_dung4").style.opacity=1;}
-	if (Game.sapphire) {document.getElementById("dung3_icon").style.opacity=1; document.getElementById("text_dung3").style.opacity=.2;} else{document.getElementById("dung3_icon").style.opacity=.2; document.getElementById("text_dung4").style.opacity=1;}
+	if (Game.fire_medallion) {document.getElementById("dung5_icon").style.opacity=1; document.getElementById("text_dung5").style.opacity=.2;} else{document.getElementById("dung5_icon").style.opacity=.2; document.getElementById("text_dung5").style.opacity=1;}
+	if (Game.water_medallion) {document.getElementById("dung6_icon").style.opacity=1; document.getElementById("text_dung6").style.opacity=.2;} else{document.getElementById("dung6_icon").style.opacity=.2; document.getElementById("text_dung6").style.opacity=1;}
+	if (Game.gen1) {document.getElementById("dung7_icon").style.opacity=1; document.getElementById("text_dung7").style.opacity=.2;} else{document.getElementById("dung7_icon").style.opacity=.2; document.getElementById("text_dung7").style.opacity=1;}
+	if (Game.gen2) {document.getElementById("dung8_icon").style.opacity=1; document.getElementById("text_dung8").style.opacity=.2;} else{document.getElementById("dung8_icon").style.opacity=.2; document.getElementById("text_dung8").style.opacity=1;}
+	if (Game.gen3) {document.getElementById("dung9_icon").style.opacity=1; document.getElementById("text_dung9").style.opacity=.2;} else{document.getElementById("dung9_icon").style.opacity=.2; document.getElementById("text_dung9").style.opacity=1;}
+	if (Game.emerald) {document.getElementById("dung1_icon").style.opacity=1; document.getElementById("text_dung1").style.opacity=.2;} else{document.getElementById("dung1_icon").style.opacity=.2; document.getElementById("text_dung1").style.opacity=1;}
+	if (Game.ruby) {document.getElementById("dung2_icon").style.opacity=1; document.getElementById("text_dung2").style.opacity=.2;} else{document.getElementById("dung2_icon").style.opacity=.2; document.getElementById("text_dung2").style.opacity=1;}
+	if (Game.sapphire) {document.getElementById("dung3_icon").style.opacity=1; document.getElementById("text_dung3").style.opacity=.2;} else{document.getElementById("dung3_icon").style.opacity=.2; document.getElementById("text_dung3").style.opacity=1;}
 
 	if (Check.deku_queen_gohma != "unknown") {if (document.getElementById("text_" + dekuPlacement) != null) {document.getElementById("text_" + dekuPlacement).style.opacity=.2}}
 	if (Check.dodongos_king_dodongo != "unknown") {if (document.getElementById("text_" + dodongosPlacement) != null) {document.getElementById("text_" + dodongosPlacement).style.opacity=.2}}

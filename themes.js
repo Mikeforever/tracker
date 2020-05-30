@@ -240,7 +240,7 @@ function dark_normie() {
 	temp +=1;
 	}
 	document.getElementById("chuButton").src= Game.bombchu_img;
-	document.getElementById("chuButton").style.opacity = .4;
+	//document.getElementById("chuButton").style.opacity = .4;
 	document.getElementById("gan_req2").src= Game.light_arrows_img;
 	document.getElementById("gan_req1").src= Game.magic_meter_img;
 	document.getElementById("gan_req3").src= Game.bow_img;
