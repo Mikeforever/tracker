@@ -136,11 +136,11 @@ function afficheHistorique() {
 	// var i = historique.length;
 	var i = 0;
 	historique.forEach(evt => {
-		affHistorique = "<tr><td>" + evt.timer + "</td><td><span id=\"historique_" + i  + "\" class=\"classHistorique\" onclick=\"annuler(" + i + ")\" >" + Names[Locations.indexOf(evt.loc)] + "</span></td><td>" + (Check[document.getElementById(evt.loc).id] === undefined ? evt.obj : Check[document.getElementById(evt.loc).id]) + "</td><td>" + (evt.hinted ? " (Hinted)" : "" ) + "</td></tr>" + affHistorique;
+		affHistorique = "<tr><td>" + evt.timer + "</td><td><span id=\"historique_" + i  + "\" class=\"classHistorique\" onclick=\"annuler(" + i + ")\" >" + Names[Locations.indexOf(evt.loc)] + "</span></td><td>" + (Check[document.getElementById(evt.loc).id] === undefined ? evt.obj : Check[document.getElementById(evt.loc).id]) + "</td><td>" + (evt.hinted ? "Hinted" : "" ) + "</td></tr>" + affHistorique;
 		i+=1; // Incrément
 	});
 	
-	document.getElementById("historique").innerHTML = "<table>" + affHistorique + "</table>";	
+	document.getElementById("historique").innerHTML = "<table><tr><th>Time</th><th>Location</th><th>Objet</th><th>Hint</th></tr>" + affHistorique + "</table>";	
 }
 
 function shuffle(array) {

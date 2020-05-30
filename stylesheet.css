@@ -591,6 +591,12 @@ table
 
 #historique table {
 	color: white;
+	border:1px solid white;
+	width:100%;
+}
+
+#historique table tr td {
+    border: 1px solid white;
 }
 
 .woth_info_text {
