@@ -131,6 +131,14 @@ function ajoutHistorique(obj, newEvt, hinted = false) {
 	historiqueSupprime = []; // On vide le tableau
 }
 
+function modifieHistorique() {
+	historique.forEach(elt => {
+		if (Game[Check[elt.loc]]) {elt.hinted = false;} else {elt.hinted = true;}
+	});
+	
+	afficheHistorique();
+}
+
 function afficheHistorique() {
 	affHistorique = "";
 	// var i = historique.length;

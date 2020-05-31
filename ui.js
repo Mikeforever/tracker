@@ -500,6 +500,8 @@ function highlight(x) {
 	if (x.id == "gor_rub" && x.style.opacity==1) {Logic.goron_ruby = true;}
 	if (x.id == "zor_sap" && x.style.opacity==1) {Logic.zora_sapphire = true;}
 	
+	modifieHistorique();
+	
 	Update(); Update(); Update();
 }
 
