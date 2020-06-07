@@ -127,8 +127,8 @@ function dark_soli() {
 	
 	var all = document.getElementsByClassName('songpics');
 	for (var i = 0; i < all.length; i++) {
-	all[i].style.width="26px";
-	all[i].style.height="26px";
+	all[i].style.width="32px";
+	all[i].style.height="32px";
 	all[i].style.marginLeft="8px";
 	all[i].style.marginBottom="2px";
 	all[i].style.marginTop="5px";
@@ -265,8 +265,8 @@ function dark_normie() {
 	document.getElementById("goldengauntletsimg").src= Game.golden_gauntlets_img;
 	var all = document.getElementsByClassName('songpics');
 	for (var i = 0; i < all.length; i++) {
-	all[i].style.width="26px";
-	all[i].style.height="26px";
+	all[i].style.width="32px";
+	all[i].style.height="32px";
 	all[i].style.marginLeft="8px";
 	all[i].style.marginBottom="2px";
 	all[i].style.marginTop="5px";
