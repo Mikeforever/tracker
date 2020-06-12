@@ -315,7 +315,7 @@ function junkUltra(x) {
 		document.getElementById("br_" + x.id + i).style.display = "none";
 	}
 	Game.checks_remaining -= temp2;
-	ajoutHistorique("junk", x.id);
+	if (temp2 != 0) {ajoutHistorique("junkUltra", x.id); } // Si cette valeur est nulle, cela veut dire qu'on a déjà cliqué dessus
 	Update();Update();Update();
 }
 

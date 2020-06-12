@@ -1,6 +1,6 @@
 function woth_and_barren_processing() {
 	for( var i = 1; i <= 34; i++) {
-	Area[i] = "normal";
+		Area[i] = "normal";
 	}
 
 	for (var i = 1; i <= 5; i++) {
@@ -475,7 +475,7 @@ function woth_and_barren_processing() {
 				Game.shadow_checks_remaining = 0;
 			}
 			if (i == 32) {
-				document.getElementById("ganons").click();
+				if (Game.ganon_checks_remaining != 0) { document.getElementById("ganons").click(); }
 			}
 			if (i == 33) {
 				Game.checks_remaining -= Game.gtg_checks_remaining;
