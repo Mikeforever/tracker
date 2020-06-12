@@ -19,6 +19,7 @@ function Update() {
 	setInLogicMaxForDungeons(); //ensures that dungeons will never add more to the in logic counter than the amount of items they contain
 	handleItemHighlights(); //add or remove transparency if player has or does not have items, respectively
 	//handleDungeonHighlights(); //highlight medallions if player has them and highlight dungeon text if player still needs to beat it
+	refreshLinSo();
 	handleAreaBreaks(); //add or remove line breaks for areas based on whether any checks in that area are currently being displayed
 
 }

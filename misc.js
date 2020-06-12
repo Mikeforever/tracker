@@ -19,6 +19,8 @@ function chargerHistorique (load = false) {
 	mem["hintInput"] = document.getElementById("hintInput").value;
 	mem["markStones"] = document.getElementById("markStones").value;
 	mem["markMedallions"] = document.getElementById("markMedallions").value;
+	mem["skull"] = Game.tokens;
+	mem["linso"] = linso;
 	if (document.getElementById("urlDiffuseur") != null) {
 		mem["urlDiffuseur"] = document.getElementById("urlDiffuseur").value;
 		mem["nomDiffuseur"] = document.getElementById("nomDiffuseur").value;
@@ -33,6 +35,34 @@ function chargerHistorique (load = false) {
 	document.body.innerHTML = contenuBodyInitial;
 	initialize();
 
+	// On remet les clics sur le tracker de linso
+	var linsoOrderIncrement = 0;
+	for (var i = 1; i <= 9; i++) {
+		for (var j = 1; j <= 6; j++) {
+			if (linsoOrder[linsoOrderIncrement] == "") {linsoOrderIncrement += 1; continue;}
+			if (linsoOrder[linsoOrderIncrement] == "skull_counter") {
+				document.getElementById("linso_counter").onmousedown = linso_counter;
+				linsoOrderIncrement += 1;
+			}
+			else {
+			
+			if (linsoOrder[linsoOrderIncrement].startsWith("circus")) {document.getElementById("linso" + i + j).onclick = toggleLinsoGoMode;}
+			Game[linsoOrder[linsoOrderIncrement]] = false;
+			if (linsoOrder[linsoOrderIncrement] == "kokiri_boots" || linsoOrder[linsoOrderIncrement] == "kokiri_tunic" || linsoOrder[linsoOrderIncrement] == "skull_token") {Game[linsoOrder[linsoOrderIncrement]] = true;}
+			if (linsoOrder[linsoOrderIncrement].startsWith("circus")) {document.getElementById("linso" + i + j).style.opacity = 0;} else {document.getElementById("linso" + i + j).style.opacity = .3; document.getElementById("linso" + i + j).style.filter = "grayscale(100%)";}
+			if (linsoOrder[linsoOrderIncrement] == "skull_token") {document.getElementById("linso" + i + j).onmousedown = linso_counter;} else if (!linsoOrder[linsoOrderIncrement].startsWith("circus")) {document.getElementById("linso" + i + j).onclick = linSoClick;}
+			linsoOrderIncrement += 1;
+			}
+		}
+	}
+	var linsoOrderIncrement = 0;
+	for (var i = 1; i <= 12; i++) {
+		if (linsoOrder[linsoOrderIncrement] == "") {linsoOrderIncrement += 1; continue;}
+		document.getElementById("linsoS" + i).onclick = linSoClick;
+		
+		linsoOrderIncrement += 1;
+	}
+
 	// Récupération de la mémoire
 	for (var i = 1; i <= 5; i++) {
 		 document.getElementById("woth_input" + i).value = mem["woth_input" + i];
@@ -43,6 +73,9 @@ function chargerHistorique (load = false) {
 	document.getElementById("hintInput").value = mem["hintInput"];
 	document.getElementById("markStones").value = mem["markStones"];
 	document.getElementById("markMedallions").value = mem["markMedallions"];
+	Game.tokens = mem["skull"];
+	document.getElementById("linso_counter").innerHTML = "" + Game.tokens;
+	linso = mem["linso"];
 	if (document.getElementById("urlDiffuseur") != null) {
 		document.getElementById("urlDiffuseur").value = mem["urlDiffuseur"]
 		document.getElementById("nomDiffuseur").value = mem["nomDiffuseur"];
@@ -64,13 +97,12 @@ function chargerHistorique (load = false) {
 					document.getElementById(evt.loc).value = capitalizeFirstLetter(evt.obj);
 				}
 			} else if (document.getElementById(evt.loc).tagName == "DIV") {
-				console.log("div : " + evt.loc);
 				if (evt.obj != "") {listeHinted = (evt.obj).split("/");}
 			} else if (document.getElementById(evt.loc).tagName == "TEXTAREA") {
-				console.log("TextArea : " + evt.loc);
 				document.getElementById(evt.loc).value = evt.obj;
+			} else if (document.getElementById(evt.loc).tagName == "SMALL") {
+				document.getElementById(evt.loc).innerHTML = "" + evt.obj;
 			} else {
-				console.log("Autre : " + evt.loc);
 				document.getElementById(evt.loc).value = evt.obj; 
 			}
 		}
@@ -87,6 +119,8 @@ function chargerHistorique (load = false) {
 		hist_aux.splice(hist_aux.length - 2);
 	}
 
+
+
 	Update(); Update(); Update();
 	process_inputs();
 
@@ -100,6 +134,8 @@ function chargerHistorique (load = false) {
 		// if (!elt.startsWith("Unread") && elt != "" && elt != "junk") {console.log("Hinted : " + elt); Hinted[elt] = false; toggleHint(document.getElementById("text_" + elt));}
 	// });
 	
+	
+	
 	// En cas de diffusion, on envoie les données vers le serveur actualisés pour le chrono
 	if (statutDiffusion) {
 		ajaxPost(pathServer + "data/" + cleDiffusion, generationJSON(), function(retour) {
@@ -107,8 +143,6 @@ function chargerHistorique (load = false) {
 			document.getElementById("statutDiffusion").innerText = retour;
 		});
 	}
-
-
 }
 
 function ajoutHistorique(obj, newEvt, hinted = false) {
@@ -273,6 +307,7 @@ function generationJSON() {
 	}
 
 	hist_save.push({loc: "notes", obj: listeHinted});
+	hist_save.push({loc: "linso_counter", obj: Game.tokens});
 	
 	textToWrite = JSON.stringify(hist_save);
 	
@@ -501,4 +536,34 @@ function Undo() {
 	Check[lastCheck[lastCheck.length-1]] = "unknown";
 	lastCheck.pop();
 	Update();Update();Update();
+}
+
+document.onkeydown = function(e) {
+	if (e.altKey && e.which == 90) {
+		timerControl();
+	}
+	if (e.ctrlKey && e.which == 90) {
+		Undo();
+	}
+	if (e.which == 187) {
+		token_click = 0; linso_counter();
+	}
+	if (e.which == 189) {
+		token_click = 2; linso_counter();
+	}
+	if (e.ctrlKey && e.which == 65) {
+		circusControl();
+	}
+}
+
+function linso_counter() {
+	if (event.button == 0 || token_click == 0) {Game.tokens += 1;}
+	if (event.button == 2 || token_click == 2) {Game.tokens -= 1;}
+	document.getElementById("linso_counter").innerHTML = "" + Game.tokens;
+	token_click = 4;
+}
+
+function linsoControl() {
+	if (linso) {linso = false; document.getElementById("linsoColumn").style.display = "none"; document.getElementById("recompenses").style.display = "flex"; document.getElementById("divsongs").style.display = "flex"; document.getElementById("affiche_linso").innerText = "linso";}
+	else {linso = true; document.getElementById("recompenses").style.display = "none"; document.getElementById("divsongs").style.display = "none"; document.getElementById("linsoColumn").style.display = "inline-block"; document.getElementById("affiche_linso").innerText = "classic"; refreshLinSo();}
 }

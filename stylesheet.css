@@ -278,7 +278,7 @@ color: red;
 	background-color: darkslateblue;
 	border: 2px white solid;
 	color: white;
-	width:250px;
+	width:260px;
 	font-size: 18px;
 }
 .full_span{
@@ -496,8 +496,8 @@ color: red;
   display: inline-block;
 }
 .songpics {
-	height:32px;
-	width: 32px;
+	height:35px;
+	width: 35px;
 	margin-left:8px;
 	margin-right:0px;
 	margin-top:5px;
@@ -592,6 +592,32 @@ table
 
 #historique table tr td {
     border: 1px solid white;
+}
+
+.linsomed {
+	font-size : 16px;
+	font-family : "Consolas", Courier, monospace;
+	color : white;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+}
+.linsostone {
+	font-size : 12px;
+	font-family : "Consolas", Courier, monospace;
+	color : black;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.linso_counter {
+	font-size:30px;
+	color: gold;
+	text-align: left;
+	position: absolute;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+#linsoColumn {
+	margin-bottom:5px;
 }
 
 .woth_info_text {

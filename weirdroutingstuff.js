@@ -17,6 +17,7 @@ function weird_routing_stuff() {
 	
 	document.getElementById("text_next").innerHTML = next_check(lastCheck);
 }
+
 function hint() {
 	document.getElementById("next").style.display = "none"; document.getElementById("text_next").style.color = "pink";
 }

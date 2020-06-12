@@ -73,7 +73,7 @@ var spiritPlacement = "unknown";
 var shadowPlacement = "unknown";
 var pocketPlacement = "unknown";
 
-var dungIconSources = ["./normal/emerald.png", "./normal/ruby.png", "./normal/sapphire.png", "./normal/forest_medallion.png", "./normal/fire_medallion.png", "./normal/water_medallion.png", "./normal/shadow_medallion.png", "./normal/spirit_medallion.png", "./normal/light_medallion.png"];
+var dungIconSources = ["./normal/items/emerald.png", "./normal/items/ruby.png", "./normal/items/sapphire.png", "./normal/items/forest.png", "./normal/items/fire.png", "./normal/items/water.png", "./normal/items/shadow.png", "./normal/items/spirit.png", "./normal/items/light.png"];
 document.getElementById("stonePic").src = dungIconSources[Math.floor(Math.random() * 3)];
 document.getElementById("medallionPic").src = dungIconSources[Math.floor(Math.random() * 6)+3];
 
@@ -164,7 +164,7 @@ var tempSeconds = 0;
 		"ganons1", "ganons2", "ganons3", "ganons4", "ganons5", "ganons6", "ganons7", "ganons8", "ganons9", "ganons10", "ganons11", "ganons12", "ganons13", "ganons14", "ganons15", "ganons16",
 		"gtg1", "gtg2", "gtg3", "gtg4", "gtg5", "gtg6", "gtg7", "gtg8", "gtg9", "gtg10", "gtg12", "gtg11", "gtg13", "gtg14", "gtg15", "gtg16", "gtg17",  "gtg18", "gtg19", "gtg20", "gtg21", "gtg22",
 		"well1", "well5", "well2", "well3", "well4", "well6", "well11", "well7", "well10", "well8", "well9", "well12", "well13", "well14",
-		"zeldasSpot", "eponasSpot", "sariasSpot", "stormsSpot", "sunsSpot", "boleroSpot", "minuetSpot", "requiemSpot", "serenadeSpot", "preludeSpot", "nocturneSpot", "oot", "woth_input1", "woth_input2", "woth_input3", "woth_input4", "woth_input5", "barren_input1", "barren_input2", "barren_input3", "markMedallions", "markStones", "forest", "fire", "water", "gtg", "spirit", "shadow", "ganons", "well"
+		"zeldasSpot", "eponasSpot", "sariasSpot", "sunsSpot", "oot", "stormsSpot", "minuetSpot", "boleroSpot",  "serenadeSpot", "nocturneSpot", "requiemSpot", "preludeSpot", "woth_input1", "woth_input2", "woth_input3", "woth_input4", "woth_input5", "barren_input1", "barren_input2", "barren_input3", "markMedallions", "markStones", "forest", "fire", "water", "gtg", "spirit", "shadow", "ganons", "well"
 		];
 		
 		var backUp = [];
@@ -204,8 +204,9 @@ var tempSeconds = 0;
 		"Ganon's: Light 1", "Ganon's: Light 2", "Ganon's: Light 3", "Ganon's: Light 4", "Ganon's: Light 5", "Ganon's: Light 6", "Ganon's: Light Enemies", "Ganon's: Light Lullaby", "Ganon's: Spirit 1", "Ganon's: Spirit 2", "Ganon's: Forest", "Ganon's: Water 1", "Ganon's: Water 2", "Ganon's: Shadow 1", "Ganon's: Shadow 2", "Ganon's: BK",
 		"GTG: Lobby Left", "GTG: Lobby Right", "GTG: Stalfos", "GTG: Wolfos", "GTG: Silvers 1", "GTG: Silvers 2", "GTG: Silvers 3", "GTG: Silvers 4", "GTG: Eyes", "GTG: Above Eyes", "GTG: Keese+Slugs", "GTG: Hammer", "GTG: Freestanding", "GTG: Right 1", "GTG: Right 2", "GTG: Beamos", "GTG: Left 1",  "GTG: Left 2", "GTG: Left 3", "GTG: Left 4", "GTG: Final", "GTG: Toilet",
 		"Well: Fake Right", "Well: Center Small", "Well: Back Bomb", "Well: Water Left", "Well: Freestanding", "Well: Center Big", "Well: Fake Left", "Well: Front Bomb", "Well: Water Front", "Well: Dead Hand", "Well: Invisible", "Well: Locked 1", "Well: Locked 2", "Well: Basement",
-		"Zelda", "Malon", "Saria", "Windmill", "Grave", "Crater", "Meadow", "Colossus", "Ice", "1 Medallion", "3 Medallion", "Ocarina of Time", "Woth 1", "Woth 2", "Woth 3", "Woth 4", "Woth 5", "Barren 1", "Barren 2", "Barren 3", "Medallion", "Stone", "FOREST", "FIRE", "WATER", "GTG", "SPIRIT", "SHADOW", "GANON", "WELL"
+		"Zelda", "Malon", "Saria", "Grave", "Ocarina of Time", "Windmill", "Meadow", "Crater", "Ice", "3 Medallion", "Colossus", "1 Medallion", "Woth 1", "Woth 2", "Woth 3", "Woth 4", "Woth 5", "Barren 1", "Barren 2", "Barren 3", "Medallion", "Stone", "FOREST", "FIRE", "WATER", "GTG", "SPIRIT", "SHADOW", "GANON", "WELL"
 		];
+
 		
 	var	gsText = [
 		"",
@@ -349,7 +350,10 @@ var tempSeconds = 0;
 		"Well" 
 		];
 	
-
+	var lastItem = 243;
+    var lastSong = 255;
+	
+	var token_click = 4;
 	  
 var woth1 = "unknown";
 var woth2 = "unknown";
@@ -433,6 +437,8 @@ function initialize() {
 	Game.emerald = false;
 	Game.ruby = false;
 	Game.sapphire = false;
+	
+	Game.tokens = 0;
 	
 	hasChangedMedal = false;
 	
@@ -941,6 +947,117 @@ if (window.location.protocol.startsWith("http")) {
 	}
 } else {
 	document.getElementById("online").innerHTML = "";
+}
+
+// Linso
+var linso = false;
+var linsoGoMode = false;
+var linsoOrder = ["stick", "nut", "bomb", "bow", "fire_arrows", "dins_fire", "slingshot", "ocarina", "chu", "hookshot", "ice_arrows", "farores_wind", "boomerang", "lens", "beans", "hammer", "light_arrows", "nayrus_love", "rutos_letter", "bottle1", "bottle2", "bottle3", "egg1", "egg2", "kokiri_sword", "master_sword", "biggoron_sword", "circus", "skull_token", "skull_counter", "deku_shield", "hylian_shield", "mirror_shield", "magic", "adults_wallet", "gerudo_card", "kokiri_tunic", "goron_tunic", "zora_tunic", "agony", "silver_scale", "goron_bracelet", "kokiri_boots", "iron_boots", "hover_boots", "emerald", "ruby", "sapphire", "forest", "fire", "water", "shadow", "spirit", "light"];
+var linsoOrder2 = ["lullaby", "eponas", "sarias", "suns", "time", "storms", "minuet", "bolero", "serenade", "nocturne", "requiem", "prelude"];
+
+handleThemes();
+handleThemes();
+var linsoOrderIncrement = 0;
+var tempTop = 0;
+for (var i = 1; i <= 11; i++) {
+if (i == 5) {tempTop += 9;} if (i == 9) {tempTop += 5;} if (i == 10) {tempTop -= 55;} if (i == 11) {tempTop += 8;}
+	for (var j = 1; j <= 6; j++) {
+		if (i > 9) {
+			if (i == 10 && j < 3) {continue;}
+			if (i == 10 && j == 3) {
+				var elem = document.createElement("small");
+				elem.id = "linso" + i + j;
+				elem.style.position = "absolute";
+				elem.style.left = 57 + j*41 + "px";
+				elem.style.top = tempTop - 81 + i*40 + "px";
+				elem.style.fontWeight = "bold";
+				elem.style.color = "hotpink";
+				elem.style.opacity = 0;
+				elem.innerHTML = 999;
+				document.getElementById("linsoColumn").appendChild(elem); 
+				continue;
+			}
+			var elem = document.createElement("small");
+			elem.id = "linso" + i + j;
+			elem.style.position = "absolute";
+			if (i == 10) {elem.className = "linsostone";} else {elem.className = "linsomed";}
+			if (i == 10) {elem.style.left = -25 + j*41 + "px";} else {elem.style.left = -28 + j*41 + "px";}
+			elem.style.top = tempTop + i*40 + "px";
+			elem.style.opacity = 1;
+			document.getElementById("linsoColumn").appendChild(elem); 
+			continue;
+		}
+		if (linsoOrder[linsoOrderIncrement] == "") {linsoOrderIncrement += 1; continue;}
+		if (linsoOrder[linsoOrderIncrement] == "skull_counter") {
+			var elem = document.createElement("small");
+			elem.innerHTML = "0";
+			elem.id = "linso_counter";
+			elem.className = "linso_counter"
+			elem.style.left = -38 + j*41 + "px";
+			elem.style.top = tempTop + i*40 + "px";
+			elem.onmousedown = linso_counter;
+			document.getElementById("linsoColumn").appendChild(elem); 
+			linsoOrderIncrement += 1;
+		}
+		else {
+		var elem = document.createElement("IMG");
+		elem.id = "linso" + i + j;
+		elem.style.height = "35px";
+		elem.style.width = "35px";
+		if (linsoOrder[linsoOrderIncrement].startsWith("bottle")) {elem.src = Game.bottle_img;}
+		else if (linsoOrder[linsoOrderIncrement].startsWith("circus")) {elem.src = "./circus-tent_1f3aa.png"; elem.onclick = toggleLinsoGoMode;}
+		else {elem.src = Game[linsoOrder[linsoOrderIncrement] + "_img"];}
+		Game[linsoOrder[linsoOrderIncrement]] = false;
+		if (linsoOrder[linsoOrderIncrement] == "kokiri_boots" || linsoOrder[linsoOrderIncrement] == "kokiri_tunic" || linsoOrder[linsoOrderIncrement] == "skull_token") {Game[linsoOrder[linsoOrderIncrement]] = true;}
+		elem.style.position = "absolute";
+		elem.style.left = -32 + j*41 + "px";
+		elem.style.top = tempTop + i*40 + "px";
+		if (linsoOrder[linsoOrderIncrement].startsWith("circus")) {elem.style.opacity = 0;} else {elem.style.opacity = .3; elem.style.filter = "grayscale(100%)";}
+		if (linsoOrder[linsoOrderIncrement] == "skull_token") {elem.onmousedown = linso_counter;} else if (!linsoOrder[linsoOrderIncrement].startsWith("circus")) {elem.onclick = linSoClick;}
+		if (linsoOrder[linsoOrderIncrement].startsWith("circus")) {
+			var elem2 = document.createElement("IMG");
+			elem2.style.position = "absolute";
+			elem2.style.left = -82 + j*41 + "px";
+			elem2.style.top = tempTop -  50 + i*40 + "px";
+			elem2.id = "linsoLight";
+			elem2.src = "./normal/linsoLight.png";
+			elem2.style.opacity = 0;
+			document.getElementById("linsoColumn").appendChild(elem2); 
+		}
+		document.getElementById("linsoColumn").appendChild(elem); 
+		linsoOrderIncrement += 1;
+		}
+	}
+}
+var linsoOrderIncrement = 0;
+tempTop = 11;
+for (var i = 1; i <= 12; i++) {
+	if (linsoOrder[linsoOrderIncrement] == "") {linsoOrderIncrement += 1; continue;}
+	var elem = document.createElement("IMG");
+	elem.id = "linsoS" + i;
+	elem.style.height = "35px";
+	elem.style.width = "35px";
+	elem.src = Game[linsoOrder2[linsoOrderIncrement] + "_img"];
+	elem.style.position = "absolute";
+	elem.style.left = 258 + "px";
+	elem.style.top = tempTop + i*31 + "px";
+	elem.style.opacity = .3;
+	elem.style.filter = "grayscale(100%)";
+	elem.onclick = linSoClick;
+	document.getElementById("linsoColumn").appendChild(elem);
+	linsoOrderIncrement += 1;
+}
+for (var i = 1; i <= 12; i++) {
+	var elem = document.createElement("IMG");
+	elem.id = "linsoC" + i;
+	elem.style.height = "15px";
+	elem.style.width = "15px";
+	elem.src = "./normal/check.png";
+	elem.style.position = "absolute";
+	elem.style.left = 278 + "px";
+	elem.style.top = tempTop + i*31 + "px";
+	elem.style.opacity = 0;
+	document.getElementById("linsoColumn").appendChild(elem);
 }
 
 var cleDiffusion = "";

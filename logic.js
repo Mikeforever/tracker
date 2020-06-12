@@ -878,15 +878,16 @@ function location_logic(){
 	Location_Logic.zeldasSpot = true;
 	Location_Logic.eponasSpot = true;
 	Location_Logic.sariasSpot = true;
-	Location_Logic.stormsSpot = true;
 	Location_Logic.sunsSpot = Logic.lullaby;
-	Location_Logic.boleroSpot = Logic.can_enter_fire_temple;
-	Location_Logic.minuetSpot = Logic.minuet || Logic.sarias;
-	Location_Logic.requiemSpot = Logic.can_enter_colossus;
-	Location_Logic.serenadeSpot = Logic.ice_access;
-	Location_Logic.preludeSpot = Logic.forest_medallion;
-	Location_Logic.nocturneSpot = Logic.forest_medallion && Logic.fire_medallion && Logic.water_medallion;
 	Location_Logic.oot = Logic.kokiri_emerald && Logic.goron_ruby && Logic.zora_sapphire;
+	Location_Logic.stormsSpot = true;
+	Location_Logic.minuetSpot = Logic.minuet || Logic.sarias;
+	Location_Logic.boleroSpot = Logic.can_enter_fire_temple;
+	Location_Logic.serenadeSpot = Logic.ice_access;
+	Location_Logic.nocturneSpot = Logic.forest_medallion && Logic.fire_medallion && Logic.water_medallion;
+	Location_Logic.requiemSpot = Logic.can_enter_colossus;
+	Location_Logic.preludeSpot = Logic.forest_medallion;
+	
 	Location_Logic.scrub_dc1 = Logic.can_enter_dodongos;
 	Location_Logic.scrub_dc2 = Logic.can_enter_dodongos;
 	Location_Logic.scrub_dc3 = Logic.bomb_bag;
