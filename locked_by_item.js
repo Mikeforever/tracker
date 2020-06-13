@@ -445,7 +445,7 @@ function checksLockedByItem(item) {
 	if(Logic.water_medallion_location == "water") {if (Check.water11 != "unknown") {Game.water_medallion = true; Game.water = true;} Locked_Logic2.water_medallion = Location_Locked_Logic2.water11;}
 	if(Logic.water_medallion_location == "spirit") {if (Check.spirit20 != "unknown") {Game.water_medallion = true; Game.water = true;} Locked_Logic2.water_medallion = Location_Locked_Logic2.spirit20;}
 	if(Logic.water_medallion_location == "shadow") {if (Check.shadow18 != "unknown") {Game.water_medallion = true; Game.water = true;} Locked_Logic2.water_medallion = Location_Locked_Logic2.shadow18;}
-	if(Logic.water_medallion_location == "pocket") {Game.water_medallion = true; Game.water = true; Locked_Logic2.water_medallion = true;}
+	if(Logic.water_medallion_location == "pocket") {Game.water_medallion = true;  Locked_Logic2.water_medallion = true;}
 
 	Locked_Logic2.shadow_medallion = true;
 	Locked_Logic2.spirit_medallion = true;

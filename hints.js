@@ -194,7 +194,7 @@ function woth_and_barren_processing() {
 				document.getElementById("woth" + tempnumber2 + "_text" + 4).innerHTML="";
 				document.getElementById("woth" + tempnumber2 + "_text" + 5).innerHTML="";
 				document.getElementById("woth" + tempnumber2 + "_text" + 6).innerHTML="";
-				
+	
 				for (var k = 0; k<Items.length; k++) {
 					if (Items[k] == "light_arrows") {continue;}
 					if (Location[Items[k]] != null && (Hinted[Location[Items[k]]] == false || typeof Hinted[Location[Items[k]]] == "undefined")) {
@@ -259,7 +259,7 @@ function woth_and_barren_processing() {
 				}
 			}
 			
-		}	
+		}
 		
 	for (var i = 1; i <= 34; i++) {
 		

@@ -169,10 +169,11 @@ function dark_normie() {
 	Game.eponas_img = "./normal/items/eponas.png";
 	Game.sarias_img = "./normal/items/sarias.png";
 	Game.suns_img = "./normal/items/suns.png";
+	Game.suns_song_img = "./normal/items/suns.png";
 	Game.sot_img = "./normal/items/time.png";
 	Game.sos_img = "./normal/items/storms.png";
-	Game.time_img = "./normal/items/time.png";
-	Game.storms_img = "./normal/items/storms.png";
+	Game.song_of_time_img = "./normal/items/time.png";
+	Game.song_of_storms_img = "./normal/items/storms.png";
 	Game.minuet_img = "./normal/items/minuet.png";
 	Game.bolero_img = "./normal/items/bolero.png";
 	Game.serenade_img = "./normal/items/serenade.png";
@@ -355,7 +356,8 @@ function dark_normie() {
 	Game.spirit_img = "./normal/items/spirit.png";
 	Game.light_img = "./normal/items/light.png";
 	
-	ItemImages = [Game.farores_wind_img, Game.slingshot_img, Game.slingshot_img, Game.slingshot_img, Game.boomerang_img, Game.silver_scale_img, Game.golden_scale_img, Game.rutos_letter_img, Game.bottle_img, Game.bottle_img, Game.bottle_img, Game.bomb_img, Game.bomb_img, Game.bomb_img, Game.hammer_img, Game.bow_img, Game.bow_img, Game.bow_img, Game.hookshot_img, Game.hookshot_img, Game.goron_bracelet_img, Game.goron_bracelet_img, Game.goron_bracelet_img, Game.mirror_shield_img, Game.magic_img, Game.magic_img, Game.iron_boots_img, Game.hover_boots_img, Game.wallet1_img, Game.wallet2_img, Game.goron_tunic_img, Game.zora_tunic_img, Game.dins_fire_img, Game.fire_arrows_img, Game.lens_img, Game.prescription_img, Game.claim_check_img, Game.light_arrows_img, Game.lullaby_img, Game.eponas_img, Game.suns_img, Game.sarias_img, Game.storms_img, Game.minuet_img, Game.bolero_img, Game.requiem_img, Game.nocturne_img, Game.time_img];
+	ItemImages = [Game.chu_img, Game.farores_wind_img, Game.slingshot_img, Game.slingshot_img, Game.slingshot_img, Game.boomerang_img, Game.silver_scale_img, Game.golden_scale_img, Game.rutos_letter_img, Game.bottle_img, Game.bottle_img, Game.bottle_img, Game.bomb_img, Game.bomb_img, Game.bomb_img, Game.hammer_img, Game.bow_img, Game.bow_img, Game.bow_img, Game.hookshot_img, Game.hookshot_img, Game.goron_bracelet_img, Game.goron_bracelet_img, Game.goron_bracelet_img, Game.mirror_shield_img, Game.magic_img, Game.magic_img, Game.iron_boots_img, Game.hover_boots_img, Game.wallet1_img, Game.wallet2_img, Game.goron_tunic_img, Game.zora_tunic_img, Game.dins_fire_img, Game.fire_arrows_img, Game.lens_img, Game.prescription_img, Game.claim_check_img, Game.light_arrows_img, Game.lullaby_img, Game.eponas_img, Game.suns_img, Game.sarias_img, Game.storms_img, Game.minuet_img, Game.bolero_img, Game.requiem_img, Game.nocturne_img, Game.time_img];
+	
 }
 
 function dark_tagnia() {

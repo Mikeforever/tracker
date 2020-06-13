@@ -953,7 +953,7 @@ if (window.location.protocol.startsWith("http")) {
 var linso = false;
 var linsoGoMode = false;
 var linsoOrder = ["stick", "nut", "bomb", "bow", "fire_arrows", "dins_fire", "slingshot", "ocarina", "chu", "hookshot", "ice_arrows", "farores_wind", "boomerang", "lens", "beans", "hammer", "light_arrows", "nayrus_love", "rutos_letter", "bottle1", "bottle2", "bottle3", "egg1", "egg2", "kokiri_sword", "master_sword", "biggoron_sword", "circus", "skull_token", "skull_counter", "deku_shield", "hylian_shield", "mirror_shield", "magic", "adults_wallet", "gerudo_card", "kokiri_tunic", "goron_tunic", "zora_tunic", "agony", "silver_scale", "goron_bracelet", "kokiri_boots", "iron_boots", "hover_boots", "emerald", "ruby", "sapphire", "forest", "fire", "water", "shadow", "spirit", "light"];
-var linsoOrder2 = ["lullaby", "eponas", "sarias", "suns", "time", "storms", "minuet", "bolero", "serenade", "nocturne", "requiem", "prelude"];
+var linsoOrder2 = ["lullaby", "eponas", "sarias", "suns_song", "song_of_time", "song_of_storms", "minuet", "bolero", "serenade", "nocturne", "requiem", "prelude"];
 var linsoLocation = [];
 var linsoLocation2 = [];
 

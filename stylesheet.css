@@ -274,11 +274,18 @@ color: red;
 .no_span {
 	
 }
+#noteswothbarren {
+	display:flex; 
+	flex-wrap: wrap; 
+	justify-content: space-between;
+	width:100%;
+	margin-bottom:5px;
+}
 #notes {
 	background-color: darkslateblue;
 	border: 2px white solid;
 	color: white;
-	width:260px;
+	width:240px;
 	font-size: 18px;
 }
 .full_span{
@@ -618,6 +625,7 @@ table
 }
 #linsoColumn {
 	margin-bottom:5px;
+	margin-right:5px;
 }
 
 .woth_info_text {
@@ -630,8 +638,18 @@ table
 	font-style: italic;
 }
 .woth_info_title {
-	font-size: 25px;
+	font-size: 20px;
 }
+.wothImages {
+	margin-bottom:0px;
+	height: 20px;
+	width: 20px;
+}
+.wothMajorImages {
+	height: 25px;
+	width: 25px;
+}
+
 #ageButton {
 	display: none;
 	height: 20px;
