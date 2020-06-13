@@ -148,8 +148,8 @@ color: red;
 	opacity:.8;
 }
 .stones {
-	height:20px;
-	width:20px;
+	height:35px;
+	width:35px;
 	margin-bottom: 7px;
 	margin-top: 5px;
 }
@@ -340,10 +340,10 @@ color: red;
 	padding: 0;
 	border: none;
 	color: lime;
-	font-weight:bold;
+	/* font-weight:bold; */
 }
 .picture_input:focus {
-	border:2px lime solid;
+	border:1px lime solid;
 }
 
 .layout_input {
@@ -776,21 +776,19 @@ font-size:22px;
     font-weight:bold;
 }
 .localSection{
-vertical-align:top;
-width:25%;
-height:60%;
-display:inline-block;
-margin:1.5%;
-margin-top:0%;
+	vertical-align:top;
+	width:25%;
+	height:60%;
+	display:inline-block;
+	margin:1.5%;
+	margin-top:0%;
 }
 #markStones {
-margin-left: 12px;
-margin-top: 6px;
-margin-right:60px;
+	margin-top: 12px;
 }
 #markMedallions {
-margin-top: 6px;
-width: 80px;
+	margin-top: 8px;
+	width: 80px;
 }
 #forceOutOfLogic{
 	color:pink;
