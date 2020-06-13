@@ -205,7 +205,7 @@ function dark_normie() {
 	document.getElementById("normalColumn1").style.width="132px";
 	document.getElementById("normalColumn2").style.width="132px";
 	document.getElementById("normalColumn3").style.width="132px";
-	document.getElementById("woth_info").style.left="976px";
+	// document.getElementById("woth_info").style.left="976px";
 	//document.getElementById("timer").style.left="820px";
 	//document.getElementById("skulls_in_logic").style.left="889px";
 	document.getElementById("dung4_icon").style.left="948px";
@@ -216,8 +216,8 @@ function dark_normie() {
 	document.getElementById("dung9_icon").style.left="948px";
 	for (const key of Object.keys(Location_Logic)) {
 		if (temp == 114) {break; }	
-		if (document.getElementById(key) != null){document.getElementById(key).style.height="29px";}
-		if (document.getElementById(key) != null){document.getElementById(key).style.width="38px";}
+		// if (document.getElementById(key) != null){document.getElementById(key).style.height="29px";}
+		// if (document.getElementById(key) != null){document.getElementById(key).style.width="38px";}
 		if (temp >= 0 && temp <=5) {document.getElementById(key).style.backgroundImage = "url('./normal/areas/kokiri.jpg')";}
 		if (temp >= 6 && temp <=7) {document.getElementById(key).style.backgroundImage = "url('./normal/areas/ranch.jpg')";}
 		if (temp >= 8 && temp <=12) {document.getElementById(key).style.backgroundImage = "url('./normal/areas/field.jpg')";}
