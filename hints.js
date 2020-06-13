@@ -217,14 +217,14 @@ function woth_and_barren_processing() {
 								document.getElementById("wothMajor" + k + tempnumber2).style.setProperty("-webkit-filter", "drop-shadow(0px 0px 5px lightblue)"); 
 								tempnumber3 +=1;
 								} 
-							for (var j = 0; j < Items.length; j++) {
-								if (ChecksLockedBy[Items[k]].includes(Location[Items[j]])){
-									document.getElementById("woth" + tempnumber2 + "_text" + tempnumber1).innerHTML += "<img id = 'wothMinor" + j + tempnumber2 + "'" + "class = 'wothImages' src=" + ItemImages[j] + ">";
-									if (WotHItems.includes(Items[j])) {
-										document.getElementById("wothMinor" + j + tempnumber2).style.setProperty("-webkit-filter", "drop-shadow(0px 0px 5px lightblue)"); 
-									} 
-								}
-							} 
+							// for (var j = 0; j < Items.length; j++) {
+								// if (ChecksLockedBy[Items[k]].includes(Location[Items[j]])){
+									// document.getElementById("woth" + tempnumber2 + "_text" + tempnumber1).innerHTML += "<img id = 'wothMinor" + j + tempnumber2 + "'" + "class = 'wothImages' src=" + ItemImages[j] + ">";
+									// if (WotHItems.includes(Items[j])) {
+										// document.getElementById("wothMinor" + j + tempnumber2).style.setProperty("-webkit-filter", "drop-shadow(0px 0px 5px lightblue)"); 
+									// } 
+								// }
+							// } 
 						document.getElementById("woth" + tempnumber2 + "_text" + tempnumber1).innerHTML += " <br />"; tempnumber1 += 1; tempArray.push(Items[k]); 
 						}
 					} 	
