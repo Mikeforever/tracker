@@ -344,6 +344,7 @@ function slowUpdate() {
 	for (i=0; i < Items.length; i++) {
 	if (Location[Items[i]] != null ) {ChecksPutInLogicBy[Items[i]] = checksPutInLogicByItem(Items[i]);}
 	}
+	refreshLinSo();
 }
 
 function timerControl() {
