@@ -954,6 +954,8 @@ var linso = false;
 var linsoGoMode = false;
 var linsoOrder = ["stick", "nut", "bomb", "bow", "fire_arrows", "dins_fire", "slingshot", "ocarina", "chu", "hookshot", "ice_arrows", "farores_wind", "boomerang", "lens", "beans", "hammer", "light_arrows", "nayrus_love", "rutos_letter", "bottle1", "bottle2", "bottle3", "egg1", "egg2", "kokiri_sword", "master_sword", "biggoron_sword", "circus", "skull_token", "skull_counter", "deku_shield", "hylian_shield", "mirror_shield", "magic", "adults_wallet", "gerudo_card", "kokiri_tunic", "goron_tunic", "zora_tunic", "agony", "silver_scale", "goron_bracelet", "kokiri_boots", "iron_boots", "hover_boots", "emerald", "ruby", "sapphire", "forest", "fire", "water", "shadow", "spirit", "light"];
 var linsoOrder2 = ["lullaby", "eponas", "sarias", "suns", "time", "storms", "minuet", "bolero", "serenade", "nocturne", "requiem", "prelude"];
+var linsoLocation = [];
+var linsoLocation2 = [];
 
 handleThemes();
 handleThemes();
@@ -1002,6 +1004,7 @@ if (i == 5) {tempTop += 9;} if (i == 9) {tempTop += 5;} if (i == 10) {tempTop -=
 		else {
 		var elem = document.createElement("IMG");
 		elem.id = "linso" + i + j;
+		linsoLocation.push("linso" + i + j);
 		elem.style.height = "35px";
 		elem.style.width = "35px";
 		if (linsoOrder[linsoOrderIncrement].startsWith("bottle")) {elem.src = Game.bottle_img;}
@@ -1035,6 +1038,7 @@ for (var i = 1; i <= 12; i++) {
 	if (linsoOrder[linsoOrderIncrement] == "") {linsoOrderIncrement += 1; continue;}
 	var elem = document.createElement("IMG");
 	elem.id = "linsoS" + i;
+	linsoLocation2.push("linsoS" + i);
 	elem.style.height = "35px";
 	elem.style.width = "35px";
 	elem.src = Game[linsoOrder2[linsoOrderIncrement] + "_img"];

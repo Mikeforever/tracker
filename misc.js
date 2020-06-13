@@ -102,6 +102,8 @@ function chargerHistorique (load = false) {
 				document.getElementById(evt.loc).value = evt.obj;
 			} else if (document.getElementById(evt.loc).tagName == "SMALL") {
 				document.getElementById(evt.loc).innerHTML = "" + evt.obj;
+			} else if (document.getElementById(evt.loc).tagName == "IMG") {
+				document.getElementById(evt.loc).click();
 			} else {
 				document.getElementById(evt.loc).value = evt.obj; 
 			}
@@ -167,7 +169,9 @@ function ajoutHistorique(obj, newEvt, hinted = false) {
 
 function modifieHistorique() {
 	historique.forEach(elt => {
-		if (Game[Check[elt.loc]]) {elt.hinted = false;} else {elt.hinted = true;}
+		if (Check[elt.loc] !== undefined) {
+			if (Game[Check[elt.loc]]) {elt.hinted = false;} else {elt.hinted = true;}
+		}
 	});
 	
 	afficheHistorique();
@@ -178,7 +182,7 @@ function afficheHistorique() {
 	// var i = historique.length;
 	var i = 0;
 	historique.forEach(evt => {
-		affHistorique = "<tr><td><span class=\"classHistorique\">" + evt.timer + "</span></td><td><span id=\"historique_" + i  + "\" class=\"classHistorique\" onclick=\"annuler(" + i + ")\" >" + Names[Locations.indexOf(evt.loc)] + "</span></td><td><span class=\"classHistorique\">" + (Check[document.getElementById(evt.loc).id] === undefined ? evt.obj : Check[document.getElementById(evt.loc).id]) + "</span></td><td><span class=\"classHistorique\">" + (evt.hinted ? "Hinted" : "" ) + "</span></td></tr>" + affHistorique;
+		affHistorique = "<tr><td><span class=\"classHistorique\">" + evt.timer + "</span></td><td><span id=\"historique_" + i  + "\" class=\"classHistorique\" onclick=\"annuler(" + i + ")\" >" + (Names[Locations.indexOf(evt.loc)] === undefined ? evt.loc : Names[Locations.indexOf(evt.loc)]) + "</span></td><td><span class=\"classHistorique\">" + (Check[document.getElementById(evt.loc).id] === undefined ? evt.obj : Check[document.getElementById(evt.loc).id]) + "</span></td><td><span class=\"classHistorique\">" + (evt.hinted ? "Hinted" : "" ) + "</span></td></tr>" + affHistorique;
 		i+=1; // Incrément
 	});
 	
