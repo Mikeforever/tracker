@@ -584,6 +584,19 @@ color: red;
 	/*position: absolute;*/
 	background: darkslateblue;
 	border: 3px white solid;
+	display:flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+#woth_info div {
+	padding: 2px;
+	border:1px white solid;
+	width:102px;
+}
+
+#woth_info div:nth-child(6) {
+	width:100%;
 }
 
 table
