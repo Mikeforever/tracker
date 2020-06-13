@@ -228,7 +228,7 @@ function dark_normie() {
 		if (temp >= 29 && temp <=29) {document.getElementById(key).style.backgroundImage = "url('./normal/areas/ogc.jpg')";}
 		if (temp >= 30 && temp <=30) {document.getElementById(key).style.backgroundImage = "url('./normal/areas/tot.jpg')";}
 		if (temp >= 31 && temp <=33) {document.getElementById(key).style.backgroundImage = "url('./normal/areas/fountain.jpg')";}
-		if (temp >= 34 && temp <=37) {document.getElementById(key).style.backgroundImage = "url('./norma/areas/market.jpg')";}
+		if (temp >= 34 && temp <=37) {document.getElementById(key).style.backgroundImage = "url('./normal/areas/ice.jpg')";}
 		if (temp >= 38 && temp <=44) {document.getElementById(key).style.backgroundImage = "url('./normal/areas/deku.jpg')";}
 		if (temp >= 45 && temp <=51) {document.getElementById(key).style.backgroundImage = "url('./normal/areas/lost_woods.jpg')";}
 		if (temp >= 52 && temp <=52) {document.getElementById(key).style.backgroundImage = "url('./normal/areas/sfm.jpg')";}
