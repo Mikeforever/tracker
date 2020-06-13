@@ -100,8 +100,9 @@ function chargerHistorique (load = false) {
 				if (evt.obj != "") {listeHinted = (evt.obj).split("/");}
 			} else if (document.getElementById(evt.loc).tagName == "TEXTAREA") {
 				document.getElementById(evt.loc).value = evt.obj;
-			} else if (document.getElementById(evt.loc).tagName == "SMALL") {
+			} else if (document.getElementById(evt.loc).tagName == "SMALL") { // Spécifique compteur de skulls
 				document.getElementById(evt.loc).innerHTML = "" + evt.obj;
+				Game.tokens = evt.obj;
 			} else if (document.getElementById(evt.loc).tagName == "IMG") {
 				document.getElementById(evt.loc).click();
 			} else {
@@ -118,7 +119,7 @@ function chargerHistorique (load = false) {
 		//console.log("Calcul temps : " + initialTime + " = " + d.getTime() + " - " + parseInt(hist_aux[hist_aux.length -2].timer, 10) + " (" + hist_aux[hist_aux.length -2].timer + ")");
 		
 		// On supprime les 2 champs qui ont été ajoutés pour la sauvegarde
-		hist_aux.splice(hist_aux.length - 2);
+		hist_aux.splice(hist_aux.length - 3);
 	}
 
 
@@ -264,7 +265,7 @@ function toggleSettings() {
 
 function enableChus() {
 	if(Game.has_chus == false) {
-		Game.has_chus = true;
+		Game.has_chus = true; Game.chu = true;
 		document.getElementById("chuButton").style.opacity = 1;
 	}
 	// else if(Game.has_chus == true) {
