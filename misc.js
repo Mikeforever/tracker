@@ -300,6 +300,8 @@ function generationJSON() {
 	var textToWrite = "";
 	var hist_save = historique.slice();
 	
+	hist_save.push({loc: "linso_counter", obj: Game.tokens});
+	
 	// On ajoute le temps passé
 	hist_save.push({loc: "hintInput", obj: document.getElementById("hintInput").value, timer: timer_stuff()});
 	
@@ -311,7 +313,6 @@ function generationJSON() {
 	}
 
 	hist_save.push({loc: "notes", obj: listeHinted});
-	hist_save.push({loc: "linso_counter", obj: Game.tokens});
 	
 	textToWrite = JSON.stringify(hist_save);
 	
