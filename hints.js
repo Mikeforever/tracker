@@ -197,6 +197,7 @@ function woth_and_barren_processing() {
 	
 				for (var k = 0; k<Items.length; k++) {
 					if (Items[k] == "light_arrows") {continue;}
+					// Si l'item a été trouvé et n'est pas un hint
 					if (Location[Items[k]] != null && (Hinted[Location[Items[k]]] == false || typeof Hinted[Location[Items[k]]] == "undefined")) {
 						if ((Locations.indexOf(Location[Items[k]]) >= AreaIndexes[i-1] && Locations.indexOf(Location[Items[k]]) < AreaIndexes[i]) || Locations.indexOf(Location[Items[k]]) == SongIndexes[i-1] || Locations.indexOf(Location[Items[k]]) == SongIndexes2[i-1]) {
 						    if (Items[k] == "slingshot1" && ((Logic.slingshot2 && !ChecksPutInLogicBy.slingshot1.includes(Location.slingshot2)) || (Logic.slingshot3 && ChecksPutInLogicBy.slingshot1.includes(Location.slingshot3)))){continue}
@@ -212,19 +213,20 @@ function woth_and_barren_processing() {
 							else if (Items[k] == "magic2" && Logic.magic1 && !ChecksPutInLogicBy.magic2.includes(Location.magic1)){continue}
 							else if (Items[k] == "goron_tunic" && Logic.can_stop_link_the_goron && !ChecksPutInLogicBy.goron_tunic.includes("goron_link") && (Logic.wallet1 && !ChecksPutInLogicBy.goron_tunic.includes(Location.wallet1) || Logic.wallet2 && !ChecksPutInLogicBy.goron_tunic.includes(Location.wallet2))){continue}
 							else if (Items[k] == "fire_arrows" && Logic.dins_fire && !ChecksPutInLogicBy.fire_arrows.includes(Location.dins_fire)){continue}
+							console.log("i :" + i + "/k : " + k + "/tempnumber2 : " + tempnumber2 + "/Items : " + Items[k]); 
 							document.getElementById("woth" + tempnumber2 + "_text" + tempnumber1).innerHTML = "<img id = 'wothMajor" + k + tempnumber2 + "'" + " class = 'wothMajorImages' src=" + ItemImages[k] + ">"; 
 							if (WotHItems.includes(Items[k])) {
 								document.getElementById("wothMajor" + k + tempnumber2).style.setProperty("-webkit-filter", "drop-shadow(0px 0px 5px lightblue)"); 
 								tempnumber3 +=1;
 								} 
-							// for (var j = 0; j < Items.length; j++) {
-								// if (ChecksLockedBy[Items[k]].includes(Location[Items[j]])){
-									// document.getElementById("woth" + tempnumber2 + "_text" + tempnumber1).innerHTML += "<img id = 'wothMinor" + j + tempnumber2 + "'" + "class = 'wothImages' src=" + ItemImages[j] + ">";
-									// if (WotHItems.includes(Items[j])) {
-										// document.getElementById("wothMinor" + j + tempnumber2).style.setProperty("-webkit-filter", "drop-shadow(0px 0px 5px lightblue)"); 
-									// } 
-								// }
-							// } 
+							for (var j = 0; j < Items.length; j++) {
+								if (ChecksLockedBy[Items[k]].includes(Location[Items[j]])){
+									document.getElementById("woth" + tempnumber2 + "_text" + tempnumber1).innerHTML += "<img id = 'wothMinor" + j + tempnumber2 + "'" + "class = 'wothImages' src=" + ItemImages[j] + ">";
+									if (WotHItems.includes(Items[j])) {
+										document.getElementById("wothMinor" + j + tempnumber2).style.setProperty("-webkit-filter", "drop-shadow(0px 0px 5px lightblue)"); 
+									} 
+								}
+							} 
 						document.getElementById("woth" + tempnumber2 + "_text" + tempnumber1).innerHTML += " <br />"; tempnumber1 += 1; tempArray.push(Items[k]); 
 						}
 					} 	

@@ -19,7 +19,7 @@ function process_inputs() {
 
 		if (temp <= 244) { 
 
-			if (document.getElementById(key).value == "junk" && Check[key] == "unknown") {junk(document.getElementById(key), "left");}
+			if (document.getElementById(key).value.toLowerCase() == "junk" && Check[key] == "unknown") {junk(document.getElementById(key), "left");}
 			if (document.getElementById(key).value == "small_key" && Check[key] == "unknown") {junk(document.getElementById(key), "right");}
 			if (document.getElementById(key).value == "boss_key" && Check[key] == "unknown") {junk(document.getElementById(key), "middle");}
 

@@ -31,9 +31,9 @@ var thisIsABossKey = false;
 var temptext2 = "";
 
 var AreaIndexes = [0,6,8,13,16,22,28,29,30,31,34,38,45,52,53,60,67,72,76,89,96,101,104,106,107,110,114,128,143,154,174,192,208,230,244];
-var SongIndexes = [0,245,255,0,0,0,244,0,253,0,252,0,0,246,0,0,0,249,247,248,0,0,251,0,0,0,0,0,0,0,0,0,0,0];
-var SongIndexes2 = [0,245,255,0,0,0,244,0,253,0,252,0,0,250,0,0,0,249,254,248,0,0,251,0,0,0,0,0,0,0,0,0,0,0];
-	
+var SongIndexes = [1000,245,248,1000,1000,1000,244,1000,255,1000,252,1000,1000,246,1000,1000,1000,251,249,247,1000,1000,254,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000];
+var SongIndexes2 = [1000,245,248,1000,1000,1000,244,1000,255,1000,252,1000,1000,250,1000,1000,1000,251,253,247,1000,1000,254,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000];
+		
 var hintStones = ["Crater: Hint", "Crater: Gr. Hint", "Trail: Gr. Hint", "Trail: Bigo Hint", "Colossus: Hint", "Dodongos: Hint", "Field: Open Gr. Hint", "Field: Remote Gr. Hint", "Field: Destiny Hint", "Valley: Hint", "Hylia: After Valley Hint", "Hylia: Back Right Hint", "Hylia: Back Left Hint", "Hyrule Castle: First Hint", "Hyrule Castle: Second Hint", "Temple of Time: First Hint", "Temple of Time: Second Hint", "Temple of Time: Third Hint", "Temple of Time: Fourth Hint", "Kakariko: Gr. Hint", "Kokiri: Left Deku Hint", "Kokiri: Right Deku Hint", "Kokiri: Gr. Hint", "Kokiri: LW Hint", "Lost Woods: Br. Hint", "Lost Woods: Gr. Hint", "SFM: Sarias Hint", "SFM: Maze 1 Hint", "SFM: Maze 2 Hint", "River: Gr. Hint", "River: Plateau Hint", "River: By ZD Hint", "Domain: Hint", "Fountain: Jabu Hint", "Fountain: By Fairy Hint", "Goron City: Maze Hint", "Goron City: Medigoron Hint", "Graveyard: Hint", "Hyrule Castle: Storms Hint", "Field: Hammer Hint"];
 
 var checkSummary = ["bombchus", "farores_wind", "slingshot1", "slingshot2", "slingshot3", "boomerang", "scale1", "scale2", "rutos_letter", "bottle1", "bottle2", "bottle3", "bomb_bag1", "bomb_bag2", "bomb_bag3", "hammer", "bow1", "bow2", "bow3", "hookshot1", "hookshot2", "strength1", "strength2", "strength3", "mirror_shield", "magic1", "magic2", "iron_boots", "hover_boots", "wallet1", "wallet2", "goron_tunic", "zora_tunic", "dins_fire", "fire_arrows", "lens_of_truth", "trade", "light_arrows", "text_zeldasSpot", "text_eponasSpot", "text_sariasSpot", "text_sunsSpot", "text_oot", "text_stormsSpot", "text_minuetSpot", "text_boleroSpot", "text_serenadeSpot", "text_requiemSpot", "text_nocturneSpot", "text_preludeSpot"];
@@ -168,6 +168,9 @@ var tempSeconds = 0;
 		];
 		
 		var backUp = [];
+		
+		var SongIndexes = [1000,245,248,1000,1000,1000,244,1000,255,1000,252,1000,1000,246,1000,1000,1000,251,249,247,1000,1000,254,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000];
+		var SongIndexes2 = [1000,245,248,1000,1000,1000,244,1000,255,1000,252,1000,1000,250,1000,1000,1000,251,253,247,1000,1000,254,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000];
 		
 		var Names = [
 		"Kokiri: Mido's 1", "Kokiri: Mido's 2", "Kokiri: Mido's 3", "Kokiri: Mido's 4", "Kokiri: Sword", "Kokiri: SoS",
