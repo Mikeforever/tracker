@@ -126,6 +126,8 @@ function chargerHistorique (load = false) {
 
 	Update(); Update(); Update();
 	process_inputs();
+	slowUpdate();
+	Update(); Update(); Update(); 
 
 	// Après l'update, on remet à jour l'historique correctement, et notamment dans le bon ordre des événements
 	historique = [];
