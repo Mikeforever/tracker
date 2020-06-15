@@ -337,8 +337,8 @@ function woth_and_barren_processing() {
 				if(Check[Locations[41]] == "unknown") {document.getElementById("text_" + Locations[41]).dispatchEvent(new Event('mousedown'));}
 				if(Check[Locations[42]] == "unknown") {document.getElementById("text_" + Locations[42]).dispatchEvent(new Event('mousedown'));}
 				if(Check[Locations[43]] == "unknown") {document.getElementById("text_" + Locations[43]).dispatchEvent(new Event('mousedown'));}
+				Game.checks_remaining -= Game.deku_checks_remaining;
 				Game.deku_checks_remaining = 0;
-				Game.checks_remaining -= 1;
 			}
 			if (i == 13) {
 				if(Check[Locations[45]] == "unknown") {document.getElementById("text_" + Locations[45]).dispatchEvent(new Event('mousedown'));}
@@ -368,8 +368,8 @@ function woth_and_barren_processing() {
 				if(Check[Locations[63]] == "unknown") {document.getElementById("text_" + Locations[63]).dispatchEvent(new Event('mousedown'));}
 				if(Check[Locations[64]] == "unknown") {document.getElementById("text_" + Locations[64]).dispatchEvent(new Event('mousedown'));}
 				if(Check[Locations[65]] == "unknown") {document.getElementById("text_" + Locations[65]).dispatchEvent(new Event('mousedown'));}
+				Game.checks_remaining -= Game.dodongos_checks_remaining;
 				Game.dodongos_checks_remaining = 0;
-				Game.checks_remaining -= 1;
 			}
 			if (i == 17) {
 				if(Check[Locations[67]] == "unknown") {document.getElementById("text_" + Locations[67]).dispatchEvent(new Event('mousedown'));}
@@ -436,8 +436,8 @@ function woth_and_barren_processing() {
 				if(Check[Locations[110]] == "unknown") {document.getElementById("text_" + Locations[110]).dispatchEvent(new Event('mousedown'));}
 				if(Check[Locations[111]] == "unknown") {document.getElementById("text_" + Locations[111]).dispatchEvent(new Event('mousedown'));}
 				if(Check[Locations[112]] == "unknown") {document.getElementById("text_" + Locations[112]).dispatchEvent(new Event('mousedown'));}
+				Game.checks_remaining -= Game.jabu_checks_remaining;
 				Game.jabu_checks_remaining = 0;
-				Game.checks_remaining -= 1;
 			}
 			if (i == 27) {
 				Game.checks_remaining -= Game.forest_checks_remaining;

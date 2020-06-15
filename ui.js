@@ -224,7 +224,7 @@ function junk(x, evt = "") {
 		else if(str.startsWith("gtg") && Game.gtg_checks_remaining != 0) {Game.gtg_checks_remaining -=1;}
 		else if(str.startsWith("well") && Game.well_checks_remaining != 0) {Game.well_checks_remaining -=1;}
 		else if(temp < 114){}
-		else {return;}
+		else {Game.checks_remaining += 1;}
 		Check[str]="junk";
 		if (temp == 44 && Game.deku_checks_remaining == 0) {Game.checks_remaining +=1;}
 		if (temp == 66 && Game.dodongos_checks_remaining == 0) {Game.checks_remaining +=1;}
@@ -336,14 +336,14 @@ function junkItem(x, obj = "nothing") {
 		if(str2.startsWith('gtg') && Game.gtg_checks_remaining != 0) {Game.gtg_checks_remaining -= 1; temp = true;}
 		if(str2.startsWith('well') && Game.well_checks_remaining != 0) {Game.well_checks_remaining -= 1; temp = true;}
 	}
-	if (!temp) {return;}
-
+	
 	document.getElementById(str2).style.display = "none";
 	document.getElementById("text_" + str2).style.display = "none";
 	document.getElementById("br_" + str2).style.display = "none";
-
-	Game.checks_remaining -=1;
 	ajoutHistorique(obj, x.id, Hinted[x.id]);
+
+	if (temp) {Game.checks_remaining -=1;}	
+	
 	Update();Update();Update();
 }
 
