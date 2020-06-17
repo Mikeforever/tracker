@@ -404,7 +404,7 @@ function initialize() {
 	gs = [];
 	Area = [];
 	Known = [];
-	paused = false;
+	paused = true;
 	woth1Locations = [];
 	woth2Locations = [];
 	woth3Locations = [];
