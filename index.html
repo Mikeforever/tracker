@@ -430,21 +430,21 @@
 </div>
 	  <div id="checkSummaryColumn">
 	  	<div id="online">
-		<span id="lblnomDiffuseur">Nom du diffuseur :</span><input id="nomDiffuseur"></input>
-		<button id="btnDiffusion" onclick="diffusion()">Lancer la diffusion</button>
-		Lien de diffusion : <input id="urlDiffuseur" style="width:300px"></input>
+		<span id="lblnomDiffuseur">Name streamer :</span><input id="nomDiffuseur"></input>
+		<button id="btnDiffusion" onclick="diffusion()">Launch diffusion</button>
+		Link to share : <input id="urlDiffuseur" style="width:300px"></input>
 		<span id="statutDiffusion"></span>
 		</div>
 		<button id="inaccessibleControl" onclick="inaccessibleControl()">Show Inaccessible</button>
 		<button id="circusControl" onclick="circusControl()">Unleash Animals</button><br />
-		<button id="myBtn">help</button><button id = "locationCodes">Location Codes</button><button id="timerControl" onclick="timerControl()">Pause chrono</button><br />
-		<button id="AfficherLoc">Afficher les objets</button>
+		<button id="myBtn">help</button><button id = "locationCodes">Location Codes</button><button id="timerControl" onclick="timerControl()">Start chrono</button><br />
+		<button id="AfficherLoc">Show items</button>
 		<button id="save" onclick="save()">Save</button> 
 		<button id="affiche_linso" onclick="linsoControl()">linso</button>
 		<img id="ageButton" onclick="switchAge()" class="buttonpics" src ="./images/child_1f9d2.png"></img>
 		<input type="file" id="historique_file" onchange="handleFiles(this.files)" accept=".json">
-		<div>Historique : (cliquer sur l'élément à annuler)</div>
-		<button id="annuler" onclick="annulerSuppression()" style = "display: none;" >Annuler le retour arrière</button>
+		<div>History : (click to undo)</div>
+		<button id="annuler" onclick="annulerSuppression()" style = "display: none;" >Undo</button>
 		<div id="historique"></div>
 	</div>
 	<div id="checkSummaryColumn2" class="modal">

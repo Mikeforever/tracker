@@ -173,7 +173,7 @@ function ajoutHistorique(obj, newEvt, hinted = false) {
 function modifieHistorique() {
 	historique.forEach(elt => {
 		if (Check[elt.loc] !== undefined) {
-			if (Game[Check[elt.loc]]) {elt.hinted = false;} else {elt.hinted = true;}
+			if (Game[Check[elt.loc]] || Check[elt.loc] == "junk") {elt.hinted = false;} else {elt.hinted = true;}
 		}
 	});
 	
@@ -487,7 +487,8 @@ function timer_stuff() {
 	tempSeconds = Math.floor((tempTime % 3600) % 60);
 	document.getElementById("timer").innerHTML = "";
 	if (tempHours > 0) {document.getElementById("timer").innerHTML += tempHours + ":";}
-	if (tempHours > 0 && tempMinutes == 0) {document.getElementById("timer").innerHTML += "00:"} if (tempMinutes > 0) {if (tempMinutes < 10 && tempHours > 0) {document.getElementById("timer").innerHTML += "0";} document.getElementById("timer").innerHTML += tempMinutes + ":";}
+	if (tempHours > 0 && tempMinutes == 0) {document.getElementById("timer").innerHTML += "00:";} 
+	if (tempMinutes > 0) {if (tempMinutes < 10 && tempHours > 0) {document.getElementById("timer").innerHTML += "0";} document.getElementById("timer").innerHTML += tempMinutes + ":";}
 	if (tempSeconds < 10 && (tempMinutes > 0 || tempHours > 0)) {document.getElementById("timer").innerHTML += "0";}
 	document.getElementById("timer").innerHTML += tempSeconds;
 	

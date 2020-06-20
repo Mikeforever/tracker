@@ -399,6 +399,8 @@ function linSoClick() {
 	else if (str.endsWith("egg2")) {Game.egg2 = true;}
 	else if (event.target.style.filter == "none") {Game[str] = false;}
 	else {Game[str] = true;}
+	
+	modifieHistorique();
 	Update();
 }
 

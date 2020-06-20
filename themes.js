@@ -291,7 +291,7 @@ function dark_normie() {
 	Game.blue_chicken_img = "./normal/items/blue_chicken.png";
 	Game.blue_fire_img = "./normal/items/blue_fire.png";
 	Game.blue_potion_img = "./normal/items/blue_potion.png";
-	Game.bomb_bag_img = "./normal/items/bomb_bag.png";
+	Game.bomb_bag_img = "./normal/items/bomb.png";
 	Game.bomb_bag_40_img = "./normal/items/bomb_bag_40.png";
 	Game.bomb_bag_50_img = "./normal/items/bomb_bag_50.png";
 	Game.broken_sword_img = "./normal/items/broken_sword.png";
