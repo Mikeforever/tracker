@@ -419,8 +419,11 @@ function checksLockedByItem(item) {
 	
 	// Reinit highlight medallions
 	Game.forest_medallion = false;
+	Game.forest = false;
 	Game.fire_medallion = false;
+	Game.fire = false;
 	Game.water_medallion = false;
+	Game.water = false;
 	Game.gen1 = false;
 	Game.gen2 = false;
 	Game.gen3 = false;
