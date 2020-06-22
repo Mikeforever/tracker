@@ -417,6 +417,17 @@ function checksLockedByItem(item) {
 	Locked_Logic2.gen2 = true;
 	Locked_Logic2.gen3 = true;
 	
+	// Reinit highlight medallions
+	Game.forest_medallion = false;
+	Game.fire_medallion = false;
+	Game.water_medallion = false;
+	Game.gen1 = false;
+	Game.gen2 = false;
+	Game.gen3 = false;
+	Game.emerald = false;
+	Game.ruby = false;
+	Game.sapphire = false;
+	
 	if(Logic.forest_medallion_location == "deku") {if (Check.deku_queen_gohma != "unknown") {Game.forest_medallion = true; Game.forest = true;} Locked_Logic2.forest_medallion = Location_Locked_Logic2.deku_queen_gohma;}
 	if(Logic.forest_medallion_location == "dodongos") {if (Check.dodongos_king_dodongo != "unknown") {Game.forest_medallion = true; Game.forest = true;} Locked_Logic2.forest_medallion = Location_Locked_Logic2.dodongos_king_dodongo;}
 	if(Logic.forest_medallion_location == "jabu") {if (Check.jabu_barinade != "unknown") {Game.forest_medallion = true; Game.forest = true;} Locked_Logic2.forest_medallion = Location_Locked_Logic2.jabu_barinade;}

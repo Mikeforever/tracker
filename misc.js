@@ -104,6 +104,7 @@ function chargerHistorique (load = false) {
 				document.getElementById(evt.loc).innerHTML = "" + evt.obj;
 				Game.tokens = evt.obj;
 			} else if (document.getElementById(evt.loc).tagName == "IMG") {
+				console.log(evt.loc + " : " + evt.obj);
 				document.getElementById(evt.loc).click();
 			} else {
 				document.getElementById(evt.loc).value = evt.obj; 
@@ -349,6 +350,7 @@ function slowUpdate() {
 	if (Location[Items[i]] != null ) {ChecksPutInLogicBy[Items[i]] = checksPutInLogicByItem(Items[i]);}
 	}
 	refreshLinSo();
+	Update();
 }
 
 function timerControl() {
