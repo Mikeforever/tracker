@@ -874,6 +874,21 @@ function initialize() {
 	document.getElementById("forceOutOfLogic4").addEventListener("change", function() {ajoutHistorique(this.value, "forceOutOfLogic4");});
 	
 	document.getElementById("hintInput").addEventListener("input", function() { Update(); process_inputs();});
+	
+	Game.logically_accessible = 0;
+	// d = new Date();
+	// pauseTotal = 0;
+	// pauseInitial = d.getTime();
+	// pauseFlag = true;
+	// initialTime = d.getTime();
+	// goodCheckPercent = 0;
+	// timeStart = d.getTime();
+	// timeCurrent;	
+	// timeFuture;
+	// timeFinal;
+	// timeLost =0;
+	// tMinutes = 0;
+	// tSeconds = 0;
 }
 
 
