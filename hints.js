@@ -197,6 +197,8 @@ function woth_and_barren_processing() {
 	
 				for (var k = 0; k<Items.length; k++) {
 					if (Items[k] == "light_arrows") {continue;}
+					if (Items[k] == "serenade") {continue;}
+					if (Items[k] == "prelude") {continue;}
 					// Si l'item a été trouvé et n'est pas un hint
 					if (Location[Items[k]] != null && (Hinted[Location[Items[k]]] == false || typeof Hinted[Location[Items[k]]] == "undefined")) {
 						if ((Locations.indexOf(Location[Items[k]]) >= AreaIndexes[i-1] && Locations.indexOf(Location[Items[k]]) < AreaIndexes[i]) || Locations.indexOf(Location[Items[k]]) == SongIndexes[i-1] || Locations.indexOf(Location[Items[k]]) == SongIndexes2[i-1]) {
@@ -243,7 +245,7 @@ function woth_and_barren_processing() {
 				
 				document.getElementById("woth" + tempnumber2 + "_title").style.color= WotHColors[tempnumber2];
 				if (AreaWotHAge[i] < tempnumber3) {
-					document.getElementById("woth" + tempnumber2 + "_title").style.opacity = .2;
+					document.getElementById("woth" + tempnumber2 + "_title").style.setProperty("-webkit-filter", "");
 					if (tempnumber2 == 1) {woth1Locations =[];}
 					if (tempnumber2 == 2) {woth2Locations = [];}
 					if (tempnumber2 == 3) {woth3Locations = [];}
@@ -251,7 +253,7 @@ function woth_and_barren_processing() {
 					if (tempnumber2 == 5) {woth5Locations = [];}
 				}
 				if (AreaWotHAge[i] >= tempnumber3) {
-					document.getElementById("woth" + tempnumber2 + "_title").style.opacity = 1;
+					document.getElementById("woth" + tempnumber2 + "_title").style.setProperty("-webkit-filter", "drop-shadow(0px 0px 10px yellow)");
 					if (tempnumber2 == 1) {woth1Locations = tempArray2.slice(0);}
 					if (tempnumber2 == 2) {woth2Locations = tempArray2.slice(0);}
 					if (tempnumber2 == 3) {woth3Locations = tempArray2.slice(0);}
