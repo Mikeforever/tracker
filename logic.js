@@ -1,91 +1,91 @@
 function refresh_logic_for_stuff() {	
-	if(Known.kokiri_sword == true) {Logic.kokiri_sword = Location_Logic[Location.kokiri_sword];}
+	if(Game.kokiri_sword == true) {Logic.kokiri_sword = Location_Logic[Location.kokiri_sword];}
 	
-	if(Known.farores_wind == true) {Logic.farores_wind = Location_Logic[Location.farores_wind];} else{Logic.farores_wind = false;}
+	if(Game.farores_wind == true) {Logic.farores_wind = Location_Logic[Location.farores_wind];} else{Logic.farores_wind = false;}
 	
-	if(Known.slingshot1 == true) {Logic.slingshot1 = Location_Logic[Location.slingshot1];} 
-	if(Known.slingshot2 == true) {Logic.slingshot2 = Location_Logic[Location.slingshot2];}
-	if(Known.slingshot3 == true) {Logic.slingshot3 = Location_Logic[Location.slingshot3];}
+	if(Game.slingshot1 == true) {Logic.slingshot1 = Location_Logic[Location.slingshot1];} 
+	if(Game.slingshot2 == true) {Logic.slingshot2 = Location_Logic[Location.slingshot2];}
+	if(Game.slingshot3 == true) {Logic.slingshot3 = Location_Logic[Location.slingshot3];}
 	Logic.slingshot = Logic.slingshot1 || Logic.slingshot2 || Logic.slingshot3;
 	
-	if(Known.boomerang == true) {Logic.boomerang = Location_Logic[Location.boomerang];} else{Logic.boomerang = false;}
+	if(Game.boomerang == true) {Logic.boomerang = Location_Logic[Location.boomerang];} else{Logic.boomerang = false;}
 	
-	if(Known.rutos_letter == true) {Logic.rutos_letter = Location_Logic[Location.rutos_letter];} else{Logic.rutos_letter = false;}
-	if(Known.bottle1 == true) {Logic.bottle1 = Location_Logic[Location.bottle1];}
-	if(Known.bottle2 == true) {Logic.bottle2 = Location_Logic[Location.bottle2];}
-	if(Known.bottle3 == true) {Logic.bottle3 = Location_Logic[Location.bottle3];}
+	if(Game.rutos_letter == true) {Logic.rutos_letter = Location_Logic[Location.rutos_letter];} else{Logic.rutos_letter = false;}
+	if(Game.bottle1 == true) {Logic.bottle1 = Location_Logic[Location.bottle1];}
+	if(Game.bottle2 == true) {Logic.bottle2 = Location_Logic[Location.bottle2];}
+	if(Game.bottle3 == true) {Logic.bottle3 = Location_Logic[Location.bottle3];}
 	Logic.bottle = (Logic.rutos_letter && ((Logic.bomb_bag && Logic.lullaby) || Logic.silver_scale)) || Logic.bottle1 || Logic.bottle2 || Logic.bottle3;
 	
-	if(Known.scale1 == true) {Logic.scale1 = Location_Logic[Location.scale1]; }
-	if(Known.scale2 == true) {Logic.scale2 = Location_Logic[Location.scale2]; }
+	if(Game.scale1 == true) {Logic.scale1 = Location_Logic[Location.scale1]; }
+	if(Game.scale2 == true) {Logic.scale2 = Location_Logic[Location.scale2]; }
 	if(Game.scale2 == true) {document.getElementById("silverscaleimg").src = Game.golden_scale_img;}
 	Logic.silver_scale = Logic.scale1 || Logic.scale2;
 	Logic.golden_scale = Logic.scale1 && Logic.scale2;
 	
-	if(Known.bomb_bag1 == true) {Logic.bomb_bag1 = Location_Logic[Location.bomb_bag1];}
-	if(Known.bomb_bag2 == true) {Logic.bomb_bag2 = Location_Logic[Location.bomb_bag2];}
-	if(Known.bomb_bag3 == true) {Logic.bomb_bag3 = Location_Logic[Location.bomb_bag3];}
+	if(Game.bomb_bag1 == true) {Logic.bomb_bag1 = Location_Logic[Location.bomb_bag1];}
+	if(Game.bomb_bag2 == true) {Logic.bomb_bag2 = Location_Logic[Location.bomb_bag2];}
+	if(Game.bomb_bag3 == true) {Logic.bomb_bag3 = Location_Logic[Location.bomb_bag3];}
 	Logic.bomb_bag = Logic.bomb_bag1 || Logic.bomb_bag2 || Logic.bomb_bag3;
 	
-	if(Known.hammer == true) {Logic.hammer = Location_Logic[Location.hammer];} else{Logic.hammer= false;}
+	if(Game.hammer == true) {Logic.hammer = Location_Logic[Location.hammer];} else{Logic.hammer= false;}
 	
-	if(Known.bow1 == true) {Logic.bow1 = Location_Logic[Location.bow1];}
-	if(Known.bow2 == true) {Logic.bow2 = Location_Logic[Location.bow2];}
-	if(Known.bow3 == true) {Logic.bow3 = Location_Logic[Location.bow3];}
+	if(Game.bow1 == true) {Logic.bow1 = Location_Logic[Location.bow1];}
+	if(Game.bow2 == true) {Logic.bow2 = Location_Logic[Location.bow2];}
+	if(Game.bow3 == true) {Logic.bow3 = Location_Logic[Location.bow3];}
 	Logic.bow = Logic.bow1 || Logic.bow2 || Logic.bow3;
 	
-	if(Known.hookshot1 == true) {Logic.hookshot1 = Location_Logic[Location.hookshot1];}
-	if(Known.hookshot2 == true) {Logic.hookshot2 = Location_Logic[Location.hookshot2];}
+	if(Game.hookshot1 == true) {Logic.hookshot1 = Location_Logic[Location.hookshot1];}
+	if(Game.hookshot2 == true) {Logic.hookshot2 = Location_Logic[Location.hookshot2];}
 	Logic.hookshot = Logic.hookshot1 || Logic.hookshot2;
 	Logic.longshot = Logic.hookshot1 && Logic.hookshot2;
-	if(Known.strength1 == true) {Logic.strength1 = Location_Logic[Location.strength1];}
-	if(Known.strength2 == true) {Logic.strength2 = Location_Logic[Location.strength2];}
-	if(Known.strength3 == true) {Logic.strength3 = Location_Logic[Location.strength3];}
+	if(Game.strength1 == true) {Logic.strength1 = Location_Logic[Location.strength1];}
+	if(Game.strength2 == true) {Logic.strength2 = Location_Logic[Location.strength2];}
+	if(Game.strength3 == true) {Logic.strength3 = Location_Logic[Location.strength3];}
 	Logic.goron_bracelet = Logic.strength1 || Logic.strength2 || Logic.strength3;
 	Logic.silver_gauntlets = (Logic.strength1 && Logic.strength2) || (Logic.strength1 && Logic.strength3) || (Logic.strength2 && Logic.strength3)
 	Logic.golden_gauntlets = Logic.strength1 && Logic.strength2 && Logic.strength3;
 	
-	if(Known.mirror_shield == true) {Logic.mirror_shield = Location_Logic[Location.mirror_shield];} else{Logic.mirror_shield = false;}
+	if(Game.mirror_shield == true) {Logic.mirror_shield = Location_Logic[Location.mirror_shield];} else{Logic.mirror_shield = false;}
 	
-	if(Known.big_poe == true) {Logic.big_poe = Location_Logic[Location.big1];} else{Logic.big_poe= false;}
+	if(Game.big_poe == true) {Logic.big_poe = Location_Logic[Location.big1];} else{Logic.big_poe= false;}
 	
-	if(Known.iron_boots == true) {Logic.iron_boots = Location_Logic[Location.iron_boots];} else{Logic.iron_boots = false;}
-	if(Known.hover_boots == true) {Logic.hover_boots = Location_Logic[Location.hover_boots];} else{Logic.hover_boots = false;}
+	if(Game.iron_boots == true) {Logic.iron_boots = Location_Logic[Location.iron_boots];} else{Logic.iron_boots = false;}
+	if(Game.hover_boots == true) {Logic.hover_boots = Location_Logic[Location.hover_boots];} else{Logic.hover_boots = false;}
 	
-	if(Known.magic1 == true) {Logic.magic1 = Location_Logic[Location.magic1];}
-	if(Known.magic2 == true) {Logic.magic2 = Location_Logic[Location.magic2];}
+	if(Game.magic1 == true) {Logic.magic1 = Location_Logic[Location.magic1];}
+	if(Game.magic2 == true) {Logic.magic2 = Location_Logic[Location.magic2];}
 	Logic.magic = Logic.magic1 || Logic.magic2;
 	
-	if(Known.dins_fire == true) {Logic.dins_fire = Location_Logic[Location.dins_fire];} else{Logic.dins_fire = false;}
-	if(Known.fire_arrows == true) {Logic.fire_arrows = Location_Logic[Location.fire_arrows];} else{Logic.fire_arrows = false;}
+	if(Game.dins_fire == true) {Logic.dins_fire = Location_Logic[Location.dins_fire];} else{Logic.dins_fire = false;}
+	if(Game.fire_arrows == true) {Logic.fire_arrows = Location_Logic[Location.fire_arrows];} else{Logic.fire_arrows = false;}
 	
-	if(Known.wallet1 == true) {Logic.wallet1 = Location_Logic[Location.wallet1];}
-	if(Known.wallet2 == true) {Logic.wallet2 = Location_Logic[Location.wallet2];}
+	if(Game.wallet1 == true) {Logic.wallet1 = Location_Logic[Location.wallet1];}
+	if(Game.wallet2 == true) {Logic.wallet2 = Location_Logic[Location.wallet2];}
 	Logic.adults_wallet = Logic.wallet1 || Logic.wallet2;
 	Logic.giants_wallet = Logic.wallet1 && Logic.wallet2;
 	
-	if(Known.goron_tunic == true) {Logic.goron_tunic = Location_Logic[Location.goron_tunic];} else{Logic.goron_tunic = false;}
-	if(Known.zora_tunic == true) {Logic.zora_tunic = Location_Logic[Location.zora_tunic];} else{Logic.zora_tunic = false;}
-	if(Known.lens_of_truth == true) {Logic.lens_of_truth = Location_Logic[Location.lens_of_truth];} else{Logic.lens_of_truth = false;}
-	if(Known.stone_of_agony == true) {Logic.stone_of_agony = Location_Logic[Location.stone_of_agony];} else{Logic.stone_of_agony = false;}
-	if(Known.prescription == true) {Logic.prescription = Location_Logic[Location.prescription];} else{Logic.prescription = false;}
-	if(Known.claim_check == true) {Logic.claim_check = Location_Logic[Location.claim_check];} else{Logic.claim_check = false;}
+	if(Game.goron_tunic == true) {Logic.goron_tunic = Location_Logic[Location.goron_tunic];} else{Logic.goron_tunic = false;}
+	if(Game.zora_tunic == true) {Logic.zora_tunic = Location_Logic[Location.zora_tunic];} else{Logic.zora_tunic = false;}
+	if(Game.lens_of_truth == true) {Logic.lens_of_truth = Location_Logic[Location.lens_of_truth];} else{Logic.lens_of_truth = false;}
+	if(Game.stone_of_agony == true) {Logic.stone_of_agony = Location_Logic[Location.stone_of_agony];} else{Logic.stone_of_agony = false;}
+	if(Game.prescription == true) {Logic.prescription = Location_Logic[Location.prescription];} else{Logic.prescription = false;}
+	if(Game.claim_check == true) {Logic.claim_check = Location_Logic[Location.claim_check];} else{Logic.claim_check = false;}
 	Logic.trade = Logic.claim_check || Logic.prescription;
 	
-	if(Known.light_arrows == true) {Logic.light_arrows = Location_Logic[Location.light_arrows];}
+	if(Game.light_arrows == true) {Logic.light_arrows = Location_Logic[Location.light_arrows];}
 	
-	if(Known.lullaby == true) {Logic.lullaby = Location_Logic[Location.lullaby]; }
-	if(Known.eponas == true) {Logic.eponas = Location_Logic[Location.eponas]; }
-	if(Known.sarias == true) {Logic.sarias = Location_Logic[Location.sarias]; }
-	if(Known.suns_song == true) {Logic.suns_song = Location_Logic[Location.suns_song]; }
-	if(Known.song_of_time == true) {Logic.song_of_time = Location_Logic[Location.song_of_time]; }
-	if(Known.song_of_storms == true) {Logic.song_of_storms = Location_Logic[Location.song_of_storms]; }
-	if(Known.minuet == true) {Logic.minuet = Location_Logic[Location.minuet]; }
-	if(Known.bolero == true) {Logic.bolero = Location_Logic[Location.bolero]; }
-	if(Known.serenade == true) {Logic.serenade = Location_Logic[Location.serenade]; }
-	if(Known.requiem == true) {Logic.requiem = Location_Logic[Location.requiem]; }
-	if(Known.nocturne == true) {Logic.nocturne = Location_Logic[Location.nocturne]; }
-	if(Known.prelude == true) {Logic.prelude = Location_Logic[Location.prelude]; }
+	if(Game.lullaby == true) {Logic.lullaby = Location_Logic[Location.lullaby]; }
+	if(Game.eponas == true) {Logic.eponas = Location_Logic[Location.eponas]; }
+	if(Game.sarias == true) {Logic.sarias = Location_Logic[Location.sarias]; }
+	if(Game.suns_song == true) {Logic.suns_song = Location_Logic[Location.suns_song]; }
+	if(Game.song_of_time == true) {Logic.song_of_time = Location_Logic[Location.song_of_time]; }
+	if(Game.song_of_storms == true) {Logic.song_of_storms = Location_Logic[Location.song_of_storms]; }
+	if(Game.minuet == true) {Logic.minuet = Location_Logic[Location.minuet]; }
+	if(Game.bolero == true) {Logic.bolero = Location_Logic[Location.bolero]; }
+	if(Game.serenade == true) {Logic.serenade = Location_Logic[Location.serenade]; }
+	if(Game.requiem == true) {Logic.requiem = Location_Logic[Location.requiem]; }
+	if(Game.nocturne == true) {Logic.nocturne = Location_Logic[Location.nocturne]; }
+	if(Game.prelude == true) {Logic.prelude = Location_Logic[Location.prelude]; }
 	
 	Game.trade = Game.prescription || Game.claim_check;
 	
